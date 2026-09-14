@@ -505,5 +505,66 @@ function showPanelInfo(panel) {
   document.getElementById("panelInfo").innerHTML = info;
 }
 </script>
+  <section id="calculator">
+  <div class="title">
+    <h2>🧮 Solar Calculator</h2>
+    <p>अपने Solar System की अनुमानित capacity और cost calculate करें।</p>
+  </div>
+
+  <div class="card" style="max-width:600px;margin:auto;text-align:left;">
+
+    <label><strong>Solar Panel</strong></label>
+    <select id="watt" style="width:100%;padding:12px;margin:8px 0 18px;">
+      <option value="585">585W Panel</option>
+      <option value="610">610W Panel</option>
+    </select>
+
+    <label><strong>Number of Panels</strong></label>
+    <input type="number" id="panels" min="1" value="10"
+      style="width:100%;padding:12px;margin:8px 0 18px;">
+
+    <label><strong>Price of Complete System (₹)</strong></label>
+    <input type="number" id="price" value="270000"
+      style="width:100%;padding:12px;margin:8px 0 18px;">
+
+    <label><strong>Subsidy / Benefit (₹)</strong></label>
+    <input type="number" id="subsidy" value="78000"
+      style="width:100%;padding:12px;margin:8px 0 18px;">
+
+    <button class="btn" onclick="calculateSolar()">
+      Calculate Solar
+    </button>
+
+    <div id="result"
+      style="margin-top:20px;padding:20px;background:#f5f7fa;border-radius:8px;">
+      अपना Solar calculation देखने के लिए Calculate दबाएँ।
+    </div>
+
+  </div>
+</section>
+
+<script>
+function calculateSolar() {
+
+  const watt = Number(document.getElementById("watt").value);
+  const panels = Number(document.getElementById("panels").value);
+  const price = Number(document.getElementById("price").value);
+  const subsidy = Number(document.getElementById("subsidy").value);
+
+  const totalKW = (watt * panels) / 1000;
+  const finalAmount = price - subsidy;
+
+  document.getElementById("result").innerHTML = `
+    <h3>☀️ Solar Calculation</h3>
+    <p><strong>Panel:</strong> ${watt}W</p>
+    <p><strong>Number of Panels:</strong> ${panels}</p>
+    <p><strong>Total Capacity:</strong> ${totalKW.toFixed(2)} kW</p>
+    <p><strong>Total System Cost:</strong> ₹${price.toLocaleString('en-IN')}</p>
+    <p><strong>Subsidy / Benefit:</strong> ₹${subsidy.toLocaleString('en-IN')}</p>
+    <hr>
+    <h3>Estimated Amount: ₹${finalAmount.toLocaleString('en-IN')}</h3>
+  `;
+}
+</script>
 </body>
 </html>
