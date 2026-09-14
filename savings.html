@@ -1,1 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>USF Solar Price Calculator</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: white !important;
+  background-image: none !important;
+  font-family: Arial, sans-serif;
+  color: #003366;
+}
+
+.container {
+  max-width: 600px;
+  margin: 35px auto;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+h2 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 18px;
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  border: 2px solid #b8dff0;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  margin-top: 22px;
+  padding: 15px;
+  background: #008000;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.result {
+  display: none;
+  margin-top: 25px;
+  padding: 20px;
+  background: #f2fbff;
+  border: 2px solid #87ceeb;
+  border-radius: 14px;
+}
+
+.result p {
+  font-size: 18px;
+  margin: 13px 0;
+}
+
+.price {
+  color: #008000;
+  font-size: 24px !important;
+  font-weight: bold;
+}
+
+.subsidy {
+  color: #006600;
+  font-size: 22px !important;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h2>☀️ Solar Price Calculator</h2>
+
+<label>Select Solar Panel</label>
+
+<select id="panel">
+  <option value="540">540W Panel</option>
+  <option value="580">580W Panel</option>
+  <option value="585">585W Panel</option>
+  <option value="610">610W Panel</option>
+  <option value="615">615W Panel</option>
+  <option value="620">620W Panel</option>
+  <option value="710">710W Panel</option>
+</select>
+
+<label>Number of Panels</label>
+
+<input
+  type="number"
+  id="panelCount"
+  min="1"
+  step="1"
+  placeholder="Enter panel quantity"
+>
+
+<button onclick="calculateSolar()">
+  Calculate
+</button>
+
+<div class="result" id="result">
+
+  <p>
+    <strong>Panel:</strong>
+    <span id="showPanel"></span>
+  </p>
+
+  <p>
+    <strong>kW:</strong>
+    <span id="showKW"></span>
+  </p>
+
+  <p class="price">
+    Price: ₹<span id="showPrice"></span>
+  </p>
+
+  <p class="subsidy">
+    Subsidy: ₹<span id="showSubsidy"></span>
+  </p>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function calculateSolar() {
+
+  let panel = parseFloat(document.getElementById("panel").value);
+  let panelCount = parseInt(document.getElementById("panelCount").value);
+
+  if (!panelCount || panelCount <= 0) {
+    alert("Please enter number of panels");
+    return;
+  }
+
+  // Panel watt × quantity = total kW
+  let kw = (panel * panelCount) / 1000;
+
+  // Price ₹28,000 per kW
+  let price = kw * 28000;
+
+  // PM Surya Ghar residential subsidy
+  let subsidy = 0;
+
+  if (kw <= 2) {
+    subsidy = kw * 30000;
+  } else if (kw <= 3) {
+    subsidy = 60000 + ((kw - 2) * 18000);
+  } else {
+    subsidy = 78000;
+  }
+
+  document.getElementById("showPanel").innerText =
+    panel + "W × " + panelCount;
+
+  document.getElementById("showKW").innerText =
+    kw.toFixed(2) + " kW";
+
+  document.getElementById("showPrice").innerText =
+    Math.round(price).toLocaleString("en-IN");
+
+  document.getElementById("showSubsidy").innerText =
+    Math.round(subsidy).toLocaleString("en-IN");
+
+  document.getElementById("result").style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
