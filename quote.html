@@ -1,1 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Get Free Quote | USF</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#eefaff,#ffffff);
+  color:#003366;
+}
+
+header{
+  background:#003366;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+header h1{
+  font-size:28px;
+}
+
+.hero{
+  text-align:center;
+  padding:40px 20px;
+  background:linear-gradient(135deg,#003366,#0b6fa4);
+  color:white;
+}
+
+.hero h2{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  line-height:1.6;
+}
+
+.container{
+  max-width:700px;
+  margin:auto;
+  padding:25px 15px;
+}
+
+.form-box{
+  background:white;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.12);
+}
+
+label{
+  display:block;
+  margin-top:15px;
+  margin-bottom:7px;
+  font-weight:bold;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:9px;
+  font-size:15px;
+}
+
+textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+button{
+  width:100%;
+  margin-top:22px;
+  padding:15px;
+  border:0;
+  border-radius:10px;
+  background:#008000;
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#006b00;
+}
+
+.home{
+  display:block;
+  text-align:center;
+  margin-top:15px;
+  padding:13px;
+  border-radius:10px;
+  background:#003366;
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+footer{
+  margin-top:30px;
+  background:#003366;
+  color:white;
+  text-align:center;
+  padding:25px 15px;
+  line-height:1.7;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>USF ⚡</h1>
+  <p>Usman Solar Fabrication</p>
+</header>
+
+<section class="hero">
+  <h2>📋 Get Free Quote</h2>
+  <p>
+    अपने Solar Project की जानकारी भेजें और USF से
+    quotation के लिए संपर्क करें।
+  </p>
+</section>
+
+<div class="container">
+
+  <div class="form-box">
+
+    <form onsubmit="sendWhatsApp(); return false;">
+
+      <label>👤 आपका नाम</label>
+      <input type="text" id="name" placeholder="अपना नाम लिखें" required>
+
+      <label>📞 मोबाइल नंबर</label>
+      <input type="tel" id="phone" placeholder="मोबाइल नंबर लिखें" required>
+
+      <label>📍 जगह / Location</label>
+      <input type="text" id="location" placeholder="शहर / एरिया" required>
+
+      <label>🏠 Project Type</label>
+      <select id="type">
+        <option>Residential</option>
+        <option>Commercial</option>
+        <option>Apartment</option>
+        <option>Other</option>
+      </select>
+
+      <label>☀️ Solar Capacity</label>
+      <select id="capacity">
+        <option>2 kW</option>
+        <option>3.51 kW</option>
+        <option>4.68 kW</option>
+        <option>5.85 kW</option>
+        <option>Other / Not Sure</option>
+      </select>
+
+      <label>💡 Monthly Electricity Bill</label>
+      <input type="number" id="bill" placeholder="₹ Monthly Bill">
+
+      <label>📝 आपकी जरूरत</label>
+      <textarea id="message"
+        placeholder="Solar installation, structure, wiring आदि की जानकारी लिखें"></textarea>
+
+      <button type="submit">
+        💬 Send Quote Request on WhatsApp
+      </button>
+
+    </form>
+
+    <a class="home" href="index.html">
+      🏠 Back to Home
+    </a>
+
+  </div>
+
+</div>
+
+<footer>
+  <b>USF – Usman Solar Fabrication</b><br>
+  Professional Solar Panel Installation & Fabrication<br>
+  📞 7487865366
+</footer>
+
+<script>
+
+function sendWhatsApp(){
+
+  var name = document.getElementById("name").value;
+  var phone = document.getElementById("phone").value;
+  var location = document.getElementById("location").value;
+  var type = document.getElementById("type").value;
+  var capacity = document.getElementById("capacity").value;
+  var bill = document.getElementById("bill").value;
+  var message = document.getElementById("message").value;
+
+  var text =
+  "Hello USF, I want a Solar Quote.%0A%0A" +
+  "Name: " + name + "%0A" +
+  "Mobile: " + phone + "%0A" +
+  "Location: " + location + "%0A" +
+  "Project Type: " + type + "%0A" +
+  "Solar Capacity: " + capacity + "%0A" +
+  "Monthly Bill: ₹" + bill + "%0A" +
+  "Requirement: " + message;
+
+  window.open(
+    "https://wa.me/917487865366?text=" + text,
+    "_blank"
+  );
+}
+
+</script>
+
+</body>
+</html>
