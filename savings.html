@@ -1,1 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>USF | Solar Savings</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#003366,#87ceeb);
+  color:#222;
+}
+
+header{
+  background:#111;
+  color:white;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:bold;
+}
+
+.logo span{
+  color:#ffc107;
+}
+
+.back{
+  color:white;
+  text-decoration:none;
+  background:#003366;
+  padding:10px 15px;
+  border-radius:8px;
+}
+
+.hero{
+  text-align:center;
+  padding:50px 7% 30px;
+  color:white;
+}
+
+.hero h1{
+  font-size:42px;
+  margin-bottom:12px;
+}
+
+.hero p{
+  font-size:18px;
+}
+
+.solar-images{
+  padding:20px 7% 10px;
+}
+
+.image-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:18px;
+}
+
+.image-card{
+  background:white;
+  padding:10px;
+  border-radius:16px;
+  box-shadow:0 8px 25px rgba(0,0,0,.2);
+}
+
+.image-card img{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.image-card h3{
+  color:#003366;
+  text-align:center;
+  padding:12px 5px 8px;
+}
+
+.calculator-section{
+  padding:35px 7% 60px;
+}
+
+.calculator{
+  max-width:650px;
+  margin:auto;
+  background:white;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.calculator label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:bold;
+  color:#003366;
+}
+
+.calculator input{
+  width:100%;
+  padding:14px;
+  border:2px solid #ddd;
+  border-radius:10px;
+  font-size:17px;
+}
+
+.calculate{
+  width:100%;
+  margin-top:18px;
+  padding:15px;
+  background:#003366;
+  color:white;
+  border:none;
+  border-radius:10px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.result{
+  margin-top:25px;
+  padding:20px;
+  background:#e8f7e8;
+  border-radius:12px;
+  text-align:center;
+}
+
+.result h2{
+  color:#003366;
+  margin-bottom:15px;
+}
+
+.result p{
+  margin:10px 0;
+  font-size:18px;
+}
+
+.big{
+  font-size:28px;
+  font-weight:bold;
+}
+
+.note{
+  margin-top:18px;
+  font-size:14px;
+  color:#555;
+  line-height:1.6;
+}
+
+.whatsapp{
+  display:block;
+  margin-top:20px;
+  padding:14px;
+  background:#25D366;
+  color:white;
+  text-decoration:none;
+  border-radius:9px;
+  text-align:center;
+  font-weight:bold;
+}
+
+.contact{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:35px 7%;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+USF <span>⚡</span>
+</div>
+
+<a class="back" href="index.html">
+← Back to Home
+</a>
+
+</header>
+
+
+<section class="hero">
+
+<h1>💡 Solar Savings</h1>
+
+<p>
+Reduce your electricity expenses with clean solar energy
+</p>
+
+</section>
+
+
+<section class="solar-images">
+
+<div class="image-grid">
+
+<div class="image-card">
+
+<img src="IMG20260628145430.jpg" alt="USF Solar Installation">
+
+<h3>☀️ Solar Installation</h3>
+
+</div>
+
+
+<div class="image-card">
+
+<img src="IMG20260531191932.jpg" alt="USF Residential Solar">
+
+<h3>🏠 Residential Solar</h3>
+
+</div>
+
+
+<div class="image-card">
+
+<img src="IMG20260530131710.jpg" alt="USF Solar Structure">
+
+<h3>🏗️ Solar Structure</h3>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="calculator-section">
+
+<div class="calculator">
+
+<label for="bill">
+Your Current Monthly Electricity Bill (₹)
+</label>
+
+<input
+type="number"
+id="bill"
+placeholder="Example: 5000"
+min="0"
+>
+
+<button class="calculate" onclick="calculateSavings()">
+☀️ Calculate My Savings
+</button>
+
+
+<div class="result">
+
+<h2>Estimated Solar Savings</h2>
+
+<p>
+Current Monthly Bill:
+</p>
+
+<p class="big" id="current">
+₹0
+</p>
+
+<p>
+Estimated Monthly Savings:
+</p>
+
+<p class="big" id="saving">
+₹0
+</p>
+
+<p>
+Estimated Yearly Savings:
+</p>
+
+<p class="big" id="yearly">
+₹0
+</p>
+
+<p id="message">
+Enter your monthly electricity bill to calculate.
+</p>
+
+</div>
+
+
+<div class="note">
+
+* This is an approximate illustration only.
+Actual savings depend on electricity consumption,
+solar generation, tariff, weather, net-metering rules
+and system performance.
+
+</div>
+
+
+<a class="whatsapp"
+href="https://wa.me/917487865366?text=Hello%20USF%2C%20I%20want%20to%20know%20about%20solar%20savings.">
+
+💬 Ask USF About Solar Savings
+
+</a>
+
+</div>
+
+</section>
+
+
+<section class="contact">
+
+<h2>☀️ Start Saving With Solar</h2>
+
+<p style="margin-top:10px;">
+📞 7487865366
+</p>
+
+<p style="margin-top:8px;">
+USF – Usman Solar Fabrication
+</p>
+
+</section>
+
+
+<script>
+
+function calculateSavings(){
+
+let bill = Number(document.getElementById("bill").value);
+
+if(bill <= 0){
+
+document.getElementById("current").innerText = "₹0";
+document.getElementById("saving").innerText = "₹0";
+document.getElementById("yearly").innerText = "₹0";
+
+document.getElementById("message").innerText =
+"Please enter your monthly electricity bill.";
+
+return;
+
+}
+
+let monthlySaving = bill * 0.80;
+let yearlySaving = monthlySaving * 12;
+
+document.getElementById("current").innerText =
+"₹" + bill.toLocaleString("en-IN");
+
+document.getElementById("saving").innerText =
+"₹" + Math.round(monthlySaving).toLocaleString("en-IN");
+
+document.getElementById("yearly").innerText =
+"₹" + Math.round(yearlySaving).toLocaleString("en-IN");
+
+document.getElementById("message").innerText =
+"Approximate savings based on an 80% illustration.";
+
+}
+
+</script>
+
+</body>
+</html>
