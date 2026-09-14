@@ -852,5 +852,82 @@ function calculateSolar() {
 
   </div>
       </section>
+    <section id="quote">
+  <div class="title">
+    <h2>☀️ I'm Interested in Solar</h2>
+    <p>अपने Solar Project के लिए जानकारी या quotation प्राप्त करें।</p>
+  </div>
+
+  <div class="card" style="max-width:650px;margin:auto;text-align:left;">
+
+    <label><strong>Your Name</strong></label>
+    <input type="text" id="customerName"
+      placeholder="अपना नाम लिखें"
+      style="width:100%;padding:12px;margin:8px 0 18px;">
+
+    <label><strong>Mobile Number</strong></label>
+    <input type="tel" id="customerMobile"
+      placeholder="अपना मोबाइल नंबर लिखें"
+      style="width:100%;padding:12px;margin:8px 0 18px;">
+
+    <label><strong>Project Type</strong></label>
+    <select id="projectType"
+      style="width:100%;padding:12px;margin:8px 0 18px;">
+      <option>Residential</option>
+      <option>Commercial</option>
+      <option>Apartment / Society</option>
+    </select>
+
+    <label><strong>Required Solar Capacity</strong></label>
+    <select id="requiredKW"
+      style="width:100%;padding:12px;margin:8px 0 18px;">
+      <option>1 kW</option>
+      <option>2 kW</option>
+      <option>3 kW</option>
+      <option>5 kW</option>
+      <option>10 kW</option>
+      <option>Other</option>
+    </select>
+
+    <label><strong>Message</strong></label>
+    <textarea id="customerMessage"
+      placeholder="अपनी जरूरत लिखें"
+      style="width:100%;padding:12px;margin:8px 0 18px;min-height:100px;"></textarea>
+
+    <button class="btn" onclick="sendSolarEnquiry()">
+      Send Enquiry
+    </button>
+
+  </div>
+</section>
+
+<script>
+function sendSolarEnquiry() {
+
+  const name = document.getElementById("customerName").value;
+  const mobile = document.getElementById("customerMobile").value;
+  const type = document.getElementById("projectType").value;
+  const kw = document.getElementById("requiredKW").value;
+  const message = document.getElementById("customerMessage").value;
+
+  if (!name || !mobile) {
+    alert("कृपया अपना नाम और मोबाइल नंबर भरें।");
+    return;
+  }
+
+  const text =
+    "Solar Enquiry%0A%0A" +
+    "Name: " + name + "%0A" +
+    "Mobile: " + mobile + "%0A" +
+    "Project: " + type + "%0A" +
+    "Required Solar: " + kw + "%0A" +
+    "Message: " + message;
+
+  window.open(
+    "https://wa.me/917487865366?text=" + text,
+    "_blank"
+  );
+}
+</script>
 </body>
 </html>
