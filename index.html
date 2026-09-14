@@ -446,5 +446,64 @@ background-position: center;
 
   </div>
 </section>
+  <section id="panel">
+  <div class="title">
+    <h2>☀️ Solar Panel Purchase</h2>
+    <p>अपनी जरूरत के अनुसार Solar Panel चुनें और अनुमानित कीमत देखें।</p>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>585W Solar Panel</h3>
+      <p>585 Watt panel — घर, दुकान और commercial installation के लिए।</p>
+      <button class="btn" onclick="showPanelInfo('585W')">
+        View Details
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>610W Solar Panel</h3>
+      <p>610 Watt panel — ज्यादा capacity वाले solar systems के लिए।</p>
+      <button class="btn" onclick="showPanelInfo('610W')">
+        View Details
+      </button>
+    </div>
+
+  </div>
+
+  <div id="panelInfo"
+       style="margin-top:30px; padding:25px; background:white; border-radius:10px; text-align:center;">
+    <h3>Solar Panel Details</h3>
+    <p>ऊपर से अपना Solar Panel चुनें।</p>
+  </div>
+</section>
+
+<script>
+function showPanelInfo(panel) {
+
+  let info = "";
+
+  if (panel === "585W") {
+    info = `
+      <h3>☀️ 585W Solar Panel</h3>
+      <p><strong>Panel Capacity:</strong> 585 Watt</p>
+      <p>उदाहरण: 10 panels × 585W = <strong>5.85 kW</strong></p>
+      <p>Final price panel quantity, system type और installation requirements के अनुसार calculate की जाएगी।</p>
+    `;
+  }
+
+  if (panel === "610W") {
+    info = `
+      <h3>☀️ 610W Solar Panel</h3>
+      <p><strong>Panel Capacity:</strong> 610 Watt</p>
+      <p>उदाहरण: 10 panels × 610W = <strong>6.10 kW</strong></p>
+      <p>Final price panel quantity, system type और installation requirements के अनुसार calculate की जाएगी।</p>
+    `;
+  }
+
+  document.getElementById("panelInfo").innerHTML = info;
+}
+</script>
 </body>
 </html>
