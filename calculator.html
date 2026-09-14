@@ -1,1 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Solar Calculator | USF</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#eefaff,#ffffff);
+  color:#003366;
+}
+
+header{
+  background:#003366;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+.hero{
+  background:linear-gradient(135deg,#003366,#0879ad);
+  color:white;
+  text-align:center;
+  padding:45px 20px;
+}
+
+.hero h2{
+  font-size:32px;
+  margin-bottom:12px;
+}
+
+.hero p{
+  line-height:1.6;
+}
+
+.container{
+  max-width:650px;
+  margin:auto;
+  padding:25px 15px;
+}
+
+.calculator{
+  background:white;
+  padding:28px;
+  border-radius:20px;
+  box-shadow:0 6px 25px rgba(0,0,0,0.12);
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+input,select{
+  width:100%;
+  padding:15px;
+  border:2px solid #d5e5ec;
+  border-radius:10px;
+  font-size:17px;
+  margin-bottom:18px;
+}
+
+button{
+  width:100%;
+  padding:15px;
+  background:#008000;
+  color:white;
+  border:0;
+  border-radius:10px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.result{
+  display:none;
+  margin-top:22px;
+  padding:22px;
+  background:#eefaff;
+  border-radius:15px;
+}
+
+.result h3{
+  text-align:center;
+  margin-bottom:18px;
+}
+
+.result-row{
+  padding:12px 0;
+  border-bottom:1px solid #d5e5ec;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.result-row:last-child{
+  border-bottom:none;
+}
+
+.value{
+  font-weight:bold;
+  color:#008000;
+}
+
+.whatsapp{
+  display:block;
+  margin-top:18px;
+  padding:14px;
+  background:#008000;
+  color:white;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:bold;
+  text-align:center;
+}
+
+.home{
+  display:block;
+  margin-top:12px;
+  padding:14px;
+  background:#003366;
+  color:white;
+  text-decoration:none;
+  border-radius:10px;
+  text-align:center;
+  font-weight:bold;
+}
+
+.note{
+  margin-top:18px;
+  font-size:13px;
+  color:#666;
+  line-height:1.6;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>USF ⚡</h1>
+  <p>Usman Solar Fabrication</p>
+</header>
+
+<section class="hero">
+  <h2>🧮 Solar kW Calculator</h2>
+  <p>
+    अपना monthly electricity bill और panel watt चुनें।
+    Calculator estimated solar capacity और panel quantity बताएगा।
+  </p>
+</section>
+
+<div class="container">
+
+<div class="calculator">
+
+  <label>💡 Monthly Electricity Bill</label>
+
+  <input
+    type="number"
+    id="bill"
+    min="1"
+    max="500000"
+    step="1"
+    placeholder="₹ जैसे 5000"
+  >
+
+  <label>☀️ Panel Watt</label>
+
+  <select id="panelWatt">
+
+    <option value="540">540W Panel</option>
+    <option value="580">580W Panel</option>
+    <option value="585" selected>585W Panel</option>
+    <option value="610">610W Panel</option>
+    <option value="615">615W Panel</option>
+    <option value="620">620W Panel</option>
+    <option value="710">710W Panel</option>
+
+  </select>
+
+  <button onclick="calculateSolar()">
+    ☀️ Calculate
+  </button>
+
+  <div class="result" id="result">
+
+    <h3>📊 Solar Calculation</h3>
+
+    <div class="result-row">
+      <span>Monthly Bill</span>
+      <span class="value" id="billResult"></span>
+    </div>
+
+    <div class="result-row">
+      <span>Estimated Units</span>
+      <span class="value" id="unitResult"></span>
+    </div>
+
+    <div class="result-row">
+      <span>Required Solar Capacity</span>
+      <span class="value" id="kwResult"></span>
+    </div>
+
+    <div class="result-row">
+      <span>Selected Panel</span>
+      <span class="value" id="panelResult"></span>
+    </div>
+
+    <div class="result-row">
+      <span>Approx. Panels Required</span>
+      <span class="value" id="panelCountResult"></span>
+    </div>
+
+    <a
+      class="whatsapp"
+      id="whatsapp"
+      target="_blank">
+      💬 USF से Solar Quote लें
+    </a>
+
+  </div>
+
+  <p class="note">
+    *यह calculation अनुमानित है। वास्तविक solar capacity
+    electricity consumption, tariff, sunlight, roof area,
+    sanctioned load और DISCOM requirements के अनुसार बदल सकती है।
+  </p>
+
+  <a class="home" href="index.html">
+    🏠 Back to Home
+  </a>
+
+</div>
+
+</div>
+
+<script>
+
+function calculateSolar(){
+
+  var bill = Number(document.getElementById("bill").value);
+  var panelWatt = Number(document.getElementById("panelWatt").value);
+
+  if(bill <= 0 || bill > 500000){
+
+    alert("कृपया ₹1 से ₹5,00,000 के बीच monthly bill डालें।");
+
+    return;
+  }
+
+  /*
+    Indicative calculation:
+    Average assumed tariff = ₹8/unit
+    Average solar generation = 120 units/month per kW
+  */
+
+  var units = bill / 8;
+
+  var requiredKW = units / 120;
+
+  /*
+    Minimum 1 kW
+  */
+
+  if(requiredKW < 1){
+    requiredKW = 1;
+  }
+
+  /*
+    Panel quantity
+  */
+
+  var panelCount =
+    Math.ceil((requiredKW * 1000) / panelWatt);
+
+  /*
+    Actual installed capacity according to
+    selected panel quantity
+  */
+
+  var actualKW =
+    (panelCount * panelWatt) / 1000;
+
+  document.getElementById("billResult").innerHTML =
+    "₹" + bill.toLocaleString("en-IN");
+
+  document.getElementById("unitResult").innerHTML =
+    units.toFixed(0) + " units/month";
+
+  document.getElementById("kwResult").innerHTML =
+    requiredKW.toFixed(2) + " kW";
+
+  document.getElementById("panelResult").innerHTML =
+    panelWatt + "W";
+
+  document.getElementById("panelCountResult").innerHTML =
+    panelCount + " Panels (" + actualKW.toFixed(2) + " kW)";
+
+  var message =
+    "Hello USF, I used the Solar Calculator.%0A%0A" +
+    "Monthly Electricity Bill: ₹" +
+    bill.toLocaleString("en-IN") + "%0A" +
+    "Estimated Units: " +
+    units.toFixed(0) + " units/month%0A" +
+    "Required Solar Capacity: " +
+    requiredKW.toFixed(2) + " kW%0A" +
+    "Selected Panel: " +
+    panelWatt + "W%0A" +
+    "Approx. Panel Quantity: " +
+    panelCount + "%0A" +
+    "Estimated Installed Capacity: " +
+    actualKW.toFixed(2) + " kW%0A%0A" +
+    "I want a solar quotation.";
+
+  document.getElementById("whatsapp").href =
+    "https://wa.me/917487865366?text=" + message;
+
+  document.getElementById("result").style.display =
+    "block";
+}
+
+</script>
+
+</body>
+</html>
