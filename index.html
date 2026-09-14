@@ -159,7 +159,53 @@ background-position: center;
       padding: 18px;
       font-size: 14px;
     }
+.menu-box {
+  position: fixed;
+  top: 85px;
+  right: 20px;
+  z-index: 9999;
+}
 
+.menu-btn {
+  background: #003366;
+  color: white;
+  border: 2px solid #87ceeb;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.menu-panel {
+  display: none;
+  width: 280px;
+  margin-top: 10px;
+  padding: 12px;
+  background: rgba(255,255,255,0.98);
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+}
+
+.menu-panel.show {
+  display: block;
+}
+
+.menu-panel a {
+  display: block;
+  padding: 14px;
+  margin: 5px 0;
+  border-radius: 10px;
+  color: #003366;
+  background: #f2fbff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menu-panel a:hover {
+  background: #d8f3ff;
+}
     @media (max-width: 650px) {
       nav {
         display: none;
