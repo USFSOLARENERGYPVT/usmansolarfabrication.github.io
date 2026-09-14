@@ -1,1 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>USF Solar Price Calculator</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #eaf8ff, #ffffff);
+  color: #003366;
+}
+
+header {
+  background: #003366;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  margin-top: 18px;
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  margin-top: 8px;
+  border: 2px solid #b8dff0;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  margin-top: 22px;
+  padding: 15px;
+  background: #008000;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 25px;
+  padding: 20px;
+  background: #f2fbff;
+  border-radius: 14px;
+  border: 2px solid #87ceeb;
+}
+
+.result p {
+  font-size: 18px;
+  margin: 12px 0;
+}
+
+.price {
+  font-size: 25px !important;
+  font-weight: bold;
+  color: #008000;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>USF ⚡</h1>
+  <p>Usman Solar Fabrication</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+
+    <h2>☀️ Solar Price Calculator</h2>
+
+    <label>Solar Capacity (kW)</label>
+    <input
+      type="number"
+      id="kw"
+      min="0.01"
+      step="0.01"
+      placeholder="Enter kW"
+    >
+
+    <label>Select Solar Panel</label>
+    <select id="panel">
+      <option value="540">540W Panel</option>
+      <option value="580">580W Panel</option>
+      <option value="585">585W Panel</option>
+      <option value="610">610W Panel</option>
+      <option value="615">615W Panel</option>
+      <option value="620">620W Panel</option>
+      <option value="710">710W Panel</option>
+    </select>
+
+    <button onclick="calculatePrice()">
+      Calculate Price
+    </button>
+
+    <div class="result" id="result" style="display:none;">
+
+      <p>
+        <strong>Panel:</strong>
+        <span id="showPanel"></span>
+      </p>
+
+      <p>
+        <strong>kW:</strong>
+        <span id="showKW"></span>
+      </p>
+
+      <p class="price">
+        Price: ₹<span id="showPrice"></span>
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+function calculatePrice() {
+
+  let kw = parseFloat(document.getElementById("kw").value);
+  let panel = document.getElementById("panel").value;
+
+  if (!kw || kw <= 0) {
+    alert("Please enter solar kW");
+    return;
+  }
+
+  // ₹28,000 per kW
+  let price = kw * 28000;
+
+  document.getElementById("showPanel").innerText = panel + "W";
+  document.getElementById("showKW").innerText = kw + " kW";
+  document.getElementById("showPrice").innerText =
+    Math.round(price).toLocaleString("en-IN");
+
+  document.getElementById("result").style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
