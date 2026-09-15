@@ -1,1 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>USF Solar | Usman Solar Fabrication</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f9fc;
+    color:#17202a;
+}
+
+/* NAVBAR */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(3,18,38,.96);
+    padding:10px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 3px 15px rgba(0,0,0,.3);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    width:55px;
+    height:55px;
+    object-fit:contain;
+    border-radius:50%;
+}
+
+.logo-text{
+    color:white;
+    font-size:19px;
+    font-weight:bold;
+}
+
+.logo-text span{
+    display:block;
+    color:#25d366;
+    font-size:12px;
+    margin-top:3px;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#25d366;
+}
+
+/* HERO */
+
+.hero{
+    height:100vh;
+    min-height:600px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.hero video{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-3;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        rgba(0,20,45,.72),
+        rgba(0,80,80,.62)
+    );
+    z-index:-2;
+}
+
+.hero-content{
+    width:92%;
+    max-width:900px;
+}
+
+.hero-logo{
+    width:130px;
+    height:130px;
+    object-fit:contain;
+    border-radius:50%;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:10px;
+    text-shadow:0 3px 15px rgba(0,0,0,.5);
+}
+
+.hero h2{
+    font-size:25px;
+    color:#25d366;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:28px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 25px;
+    border-radius:30px;
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    font-size:16px;
+    transition:.3s;
+}
+
+.btn-calculator{
+    background:#087f8c;
+}
+
+.btn-whatsapp{
+    background:#25d366;
+}
+
+.btn-material{
+    background:#063c63;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+
+/* SECTIONS */
+
+section{
+    padding:80px 6%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:35px;
+    color:#063c63;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#666;
+}
+
+/* ABOUT */
+
+.about{
+    background:white;
+}
+
+.about-content{
+    max-width:1000px;
+    margin:auto;
+    text-align:center;
+}
+
+.about-content p{
+    font-size:17px;
+    line-height:1.8;
+    color:#555;
+}
+
+/* SERVICES */
+
+.services{
+    background:#f1f8fb;
+}
+
+.service-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.service-card{
+    background:white;
+    padding:30px 22px;
+    text-align:center;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.service-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 25px rgba(0,0,0,.14);
+}
+
+.service-icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.service-card h3{
+    color:#063c63;
+    margin-bottom:12px;
+    font-size:21px;
+}
+
+.service-card p{
+    color:#666;
+    line-height:1.6;
+}
+
+/* GALLERY */
+
+.gallery{
+    background:white;
+}
+
+.gallery-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.gallery-item{
+    height:320px;
+    overflow:hidden;
+    border-radius:18px;
+    box-shadow:0 5px 18px rgba(0,0,0,.15);
+    background:#eee;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.07);
+}
+
+/* CALCULATOR CTA */
+
+.calculator-section{
+    background:linear-gradient(135deg,#063c63,#087f8c);
+    color:white;
+    text-align:center;
+}
+
+.calculator-section h2{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.calculator-section p{
+    font-size:17px;
+    margin-bottom:25px;
+}
+
+.calculator-buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.calculator-btn{
+    display:inline-block;
+    background:#25d366;
+    color:white;
+    text-decoration:none;
+    padding:15px 30px;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.material-btn{
+    display:inline-block;
+    background:#031226;
+    color:white;
+    text-decoration:none;
+    padding:15px 30px;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.calculator-btn:hover,
+.material-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+
+/* CONTACT */
+
+.contact{
+    background:#f1f8fb;
+}
+
+.contact-box{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 7px 25px rgba(0,0,0,.1);
+}
+
+.contact-box h3{
+    color:#063c63;
+    font-size:25px;
+    margin-bottom:15px;
+}
+
+.contact-box p{
+    color:#555;
+    margin-bottom:20px;
+}
+
+.contact-whatsapp{
+    display:inline-block;
+    text-decoration:none;
+    background:#25d366;
+    color:white;
+    padding:14px 25px;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+/* FOOTER */
+
+footer{
+    background:#031226;
+    color:#d5e5ef;
+    text-align:center;
+    padding:30px 15px;
+}
+
+.footer-logo{
+    width:65px;
+    height:65px;
+    object-fit:contain;
+    border-radius:50%;
+    margin-bottom:10px;
+}
+
+footer p{
+    font-size:13px;
+    margin-top:7px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero h2{
+        font-size:20px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .hero-logo{
+        width:100px;
+        height:100px;
+    }
+
+    .service-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-item{
+        height:260px;
+    }
+
+    section{
+        padding:65px 5%;
+    }
+
+    .section-title h2{
+        font-size:29px;
+    }
+
+    .calculator-buttons{
+        flex-direction:column;
+    }
+
+    .calculator-btn,
+    .material-btn{
+        width:90%;
+        max-width:330px;
+    }
+}
+
+@media(max-width:450px){
+
+    .logo-text{
+        font-size:15px;
+    }
+
+    .logo img{
+        width:45px;
+        height:45px;
+    }
+
+    .hero h1{
+        font-size:31px;
+    }
+
+    .hero h2{
+        font-size:18px;
+    }
+
+    .buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn{
+        width:85%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <img
+            src="file_0000000087c481fa815729422a1f230e.png"
+            alt="USF Solar Logo"
+        >
+
+        <div class="logo-text">
+            USF SOLAR
+            <span>Usman Solar Fabrication</span>
+        </div>
+
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#home">Home</a>
+        </li>
+
+        <li>
+            <a href="#about">About</a>
+        </li>
+
+        <li>
+            <a href="#services">Services</a>
+        </li>
+
+        <li>
+            <a href="#gallery">Gallery</a>
+        </li>
+
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+    <video autoplay muted loop playsinline>
+
+        <source
+            src="USF SOLAR pvt_20260914_162426_0000.mp4"
+            type="video/mp4"
+        >
+
+    </video>
+
+
+    <div class="hero-overlay"></div>
+
+
+    <div class="hero-content">
+
+        <img
+            class="hero-logo"
+            src="file_0000000087c481fa815729422a1f230e.png"
+            alt="USF Solar"
+        >
+
+
+        <h1>
+            USF SOLAR
+        </h1>
+
+
+        <h2>
+            Usman Solar Fabrication
+        </h2>
+
+
+        <p>
+            Clean Energy • Bright Future
+            <br>
+            भरोसेमंद Solar Installation और Solar Solutions
+        </p>
+
+
+        <div class="buttons">
+
+            <a
+                href="calculator.html"
+                class="btn btn-calculator"
+            >
+                🧮 Solar Calculator
+            </a>
+
+
+            <a
+                href="https://wa.me/917487865366"
+                target="_blank"
+                class="btn btn-whatsapp"
+            >
+                📲 WhatsApp
+            </a>
+
+
+            <a
+                href="material.html"
+                class="btn btn-material"
+            >
+                📋 Solar Material
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section class="about" id="about">
+
+    <div class="section-title">
+
+        <h2>
+            About USF Solar
+        </h2>
+
+        <p>
+            Clean Energy के साथ बेहतर भविष्य
+        </p>
+
+    </div>
+
+
+    <div class="about-content">
+
+        <p>
+
+            <b>USF Solar – Usman Solar Fabrication</b>
+            Solar energy solutions के क्षेत्र में काम करने वाली
+            कंपनी है। हमारा उद्देश्य ग्राहकों को बेहतर quality,
+            सही installation और भरोसेमंद solar solutions देना है।
+
+            <br><br>
+
+            Residential से लेकर commercial projects तक,
+            हम Solar Installation, Fabrication और Solar Solutions
+            उपलब्ध कराने का प्रयास करते हैं।
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+
+<section class="services" id="services">
+
+    <div class="section-title">
+
+        <h2>
+            Our Services
+        </h2>
+
+        <p>
+            Solar से जुड़ी हमारी मुख्य सेवाएं
+        </p>
+
+    </div>
+
+
+    <div class="service-grid">
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                ☀️
+            </div>
+
+            <h3>
+                Solar Installation
+            </h3>
+
+            <p>
+                घर और commercial जगहों के लिए
+                professional solar installation solutions।
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                🔧
+            </div>
+
+            <h3>
+                Solar Fabrication
+            </h3>
+
+            <p>
+                Solar panels के लिए मजबूत और
+                भरोसेमंद fabrication structure।
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Solar Solutions
+            </h3>
+
+            <p>
+                आपकी जरूरत और बिजली consumption
+                के अनुसार solar system solutions।
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     GALLERY
+========================= -->
+
+<section class="gallery" id="gallery">
+
+    <div class="section-title">
+
+        <h2>
+            Our Gallery
+        </h2>
+
+        <p>
+            हमारे Solar Work और Projects
+        </p>
+
+    </div>
+
+
+    <div class="gallery-grid">
+
+
+        <div class="gallery-item">
+
+            <img
+                src="IMG20260628145430.jpg"
+                alt="USF Solar Project"
+                loading="lazy"
+            >
+
+        </div>
+
+
+        <div class="gallery-item">
+
+            <img
+                src="IMG20260530131710.jpg"
+                alt="USF Solar Project"
+                loading="lazy"
+            >
+
+        </div>
+
+
+        <div class="gallery-item">
+
+            <img
+                src="IMG20260531191932.jpg"
+                alt="USF Solar Project"
+                loading="lazy"
+            >
+
+        </div>
+
+
+        <div class="gallery-item">
+
+            <img
+                src="IMG20260420124402.jpg"
+                alt="USF Solar Project"
+                loading="lazy"
+            >
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CALCULATOR + MATERIAL
+========================= -->
+
+<section class="calculator-section">
+
+    <h2>
+        ☀️ अपना Solar System Calculate करें
+    </h2>
+
+    <p>
+        सिर्फ अपना बिजली बिल डालें और अनुमानित Solar System,
+        Subsidy और EMI जानें।
+    </p>
+
+
+    <div class="calculator-buttons">
+
+        <!-- SOLAR CALCULATOR -->
+
+        <a
+            href="calculator.html"
+            class="calculator-btn"
+        >
+            🧮 Open Solar Calculator
+        </a>
+
+
+        <!-- SOLAR MATERIAL -->
+
+        <a
+            href="material.html"
+            class="material-btn"
+        >
+            📋 Solar Material
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="contact" id="contact">
+
+    <div class="section-title">
+
+        <h2>
+            Contact Us
+        </h2>
+
+        <p>
+            Solar के लिए हमसे संपर्क करें
+        </p>
+
+    </div>
+
+
+    <div class="contact-box">
+
+        <h3>
+            USF SOLAR
+        </h3>
+
+        <p>
+            Usman Solar Fabrication
+        </p>
+
+        <p>
+            📲 WhatsApp:
+            <b>+91 74878 65366</b>
+        </p>
+
+
+        <a
+            href="https://wa.me/917487865366"
+            target="_blank"
+            class="contact-whatsapp"
+        >
+            💬 WhatsApp पर बात करें
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <img
+        class="footer-logo"
+        src="file_0000000087c481fa815729422a1f230e.png"
+        alt="USF Solar Logo"
+    >
+
+
+    <h3>
+        USF SOLAR
+    </h3>
+
+
+    <p>
+        Usman Solar Fabrication
+    </p>
+
+
+    <p>
+        Clean Energy | Bright Future
+    </p>
+
+
+    <p>
+        © 2026 USF Solar. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+</body>
+  </html>
