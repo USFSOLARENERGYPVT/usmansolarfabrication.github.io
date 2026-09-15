@@ -1,1 +1,248 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>USF Solar Calculator</title>
 
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#031226,#087f8c);color:#17202a}
+nav{background:#031226;padding:10px 5%;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:bold}
+.brand img{width:50px;height:50px;border-radius:50%;object-fit:contain}
+nav a{color:#fff;text-decoration:none;margin-right:18px;font-weight:bold}
+.lang{padding:8px 10px;border:0;border-radius:20px;font-weight:bold}
+.wrap{max-width:850px;margin:35px auto;padding:20px}
+.card{background:#fff;border-radius:22px;padding:30px;box-shadow:0 12px 35px #0005}
+h1{text-align:center;color:#063c63}
+.sub{text-align:center;color:#666}
+.input{margin:25px 0}
+.input label{display:block;font-weight:bold;margin-bottom:8px}
+.input input{width:100%;padding:16px;border:2px solid #dbe7ee;border-radius:12px;font-size:20px}
+.btn{width:100%;border:0;padding:15px;border-radius:30px;background:#25d366;color:#fff;font-size:18px;font-weight:bold;cursor:pointer}
+.results{display:none;margin-top:25px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.box{background:#f1f8fb;border-radius:15px;padding:18px}
+.box small{color:#666}
+.box strong{display:block;color:#063c63;font-size:22px;margin-top:7px}
+h3{text-align:center;color:#063c63;margin-top:25px}
+table{width:100%;border-collapse:collapse;margin-top:20px}
+th,td{padding:12px;border-bottom:1px solid #ddd;text-align:center}
+.wa{display:block;text-align:center;background:#25d366;color:#fff;text-decoration:none;padding:14px;border-radius:30px;margin-top:20px;font-weight:bold}
+.note{margin-top:20px;color:#666;line-height:1.6;font-size:14px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}nav a{display:none}.wrap{padding:10px}.card{padding:20px}}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="brand">
+<img src="file_0000000087c481fa815729422a1f230e.png">
+USF SOLAR
+</div>
+
+<div>
+<a href="index.html" data-k="home">Home</a>
+<a href="material.html" data-k="material">Material</a>
+
+<select class="lang" id="language">
+<option value="hi">🇮🇳 हिंदी</option>
+<option value="en">🇬🇧 English</option>
+<option value="gu">🇮🇳 ગુજરાતી</option>
+</select>
+</div>
+</nav>
+
+<div class="wrap">
+<div class="card">
+
+<h1 data-k="title">🧮 Solar Calculator</h1>
+<p class="sub" data-k="sub">अपना बिजली बिल डालें और अनुमानित Solar System जानें।</p>
+
+<div class="input">
+<label data-k="bill">मासिक बिजली बिल (₹)</label>
+<input id="bill" type="number" min="500" max="500000" placeholder="जैसे 5000">
+</div>
+
+<button class="btn" onclick="calculate()" data-k="calculate">
+Calculate करें
+</button>
+
+<div class="results" id="results">
+
+<div class="grid">
+
+<div class="box">
+<small data-k="system">अनुमानित Solar System</small>
+<strong id="kw">-</strong>
+</div>
+
+<div class="box">
+<small data-k="monthlyBill">मासिक बिजली बिल</small>
+<strong id="billOut">-</strong>
+</div>
+
+<div class="box">
+<small data-k="daily">Solar से अनुमानित उत्पादन / दिन</small>
+<strong id="dailyOut">-</strong>
+</div>
+
+<div class="box">
+<small data-k="monthly">Solar से अनुमानित उत्पादन / महीना</small>
+<strong id="monthlyOut">-</strong>
+</div>
+
+<div class="box">
+<small data-k="price">Solar System Price</small>
+<strong id="priceOut">-</strong>
+</div>
+
+<div class="box">
+<small data-k="subsidy">Government Subsidy</small>
+<strong id="subsidyOut">-</strong>
+</div>
+
+<div class="box">
+<small data-k="after">Subsidy के बाद अनुमानित कीमत</small>
+<strong id="afterOut">-</strong>
+</div>
+
+</div>
+
+<h3 data-k="emiTitle">📅 Estimated Monthly EMI</h3>
+
+<table>
+<thead>
+<tr>
+<th data-k="term">अवधि</th>
+<th data-k="emi">मासिक EMI</th>
+</tr>
+</thead>
+<tbody id="emiBody"></tbody>
+</table>
+
+<a id="wa" class="wa" target="_blank" data-k="wa">
+📲 यह Calculation WhatsApp पर भेजें
+</a>
+
+<p class="note" data-k="note">
+यह एक अनुमानित calculation है। Subsidy और loan approval सरकारी नियमों, eligibility और finance approval पर निर्भर करते हैं।
+</p>
+
+</div>
+</div>
+</div>
+
+<script>
+const t={
+hi:{
+home:"होम",material:"Material",title:"🧮 Solar Calculator",
+sub:"अपना बिजली बिल डालें और अनुमानित Solar System जानें।",
+bill:"मासिक बिजली बिल (₹)",calculate:"Calculate करें",
+system:"अनुमानित Solar System",monthlyBill:"मासिक बिजली बिल",
+daily:"Solar से अनुमानित उत्पादन / दिन",monthly:"Solar से अनुमानित उत्पादन / महीना",
+price:"Solar System Price",subsidy:"Government Subsidy",
+after:"Subsidy के बाद अनुमानित कीमत",emiTitle:"📅 Estimated Monthly EMI",
+term:"अवधि",emi:"मासिक EMI",wa:"📲 यह Calculation WhatsApp पर भेजें",
+note:"यह एक अनुमानित calculation है। Subsidy और loan approval सरकारी नियमों, eligibility और finance approval पर निर्भर करते हैं।"
+},
+en:{
+home:"Home",material:"Material",title:"🧮 Solar Calculator",
+sub:"Enter your electricity bill to estimate your Solar System.",
+bill:"Monthly Electricity Bill (₹)",calculate:"Calculate",
+system:"Estimated Solar System",monthlyBill:"Monthly Electricity Bill",
+daily:"Estimated Solar Generation / Day",monthly:"Estimated Solar Generation / Month",
+price:"Solar System Price",subsidy:"Government Subsidy",
+after:"Estimated Price After Subsidy",emiTitle:"📅 Estimated Monthly EMI",
+term:"Tenure",emi:"Monthly EMI",wa:"📲 Send this Calculation on WhatsApp",
+note:"This is an estimated calculation. Subsidy and loan approval depend on government rules, eligibility and finance approval."
+},
+gu:{
+home:"હોમ",material:"મટિરિયલ",title:"🧮 Solar Calculator",
+sub:"તમારું વીજળીનું બિલ નાખો અને અંદાજિત Solar System જાણો.",
+bill:"માસિક વીજળીનું બિલ (₹)",calculate:"Calculate કરો",
+system:"અંદાજિત Solar System",monthlyBill:"માસિક વીજળીનું બિલ",
+daily:"અંદાજિત Solar Generation / દિવસ",monthly:"અંદાજિત Solar Generation / મહિનો",
+price:"Solar System Price",subsidy:"Government Subsidy",
+after:"Subsidy પછી અંદાજિત કિંમત",emiTitle:"📅 Estimated Monthly EMI",
+term:"સમયગાળો",emi:"માસિક EMI",wa:"📲 આ Calculation WhatsApp પર મોકલો",
+note:"આ અંદાજિત calculation છે. Subsidy અને loan approval સરકારી નિયમો, eligibility અને finance approval પર આધારિત છે."
+}};
+
+function setLang(l){
+document.querySelectorAll("[data-k]").forEach(e=>{
+e.innerHTML=t[l][e.dataset.k];
+});
+document.documentElement.lang=l;
+localStorage.setItem("usfLanguage",l);
+}
+
+let saved=localStorage.getItem("usfLanguage")||"hi";
+language.value=saved;
+setLang(saved);
+language.onchange=e=>setLang(e.target.value);
+
+const money=n=>"₹"+Math.round(n).toLocaleString("en-IN");
+
+function rate(k){
+return k<=1?55000:k<=100?49000:45000;
+}
+
+function subsidy(k){
+if(k<=2)return k*30000;
+return Math.min(78000,60000+Math.min(k-2,1)*18000);
+}
+
+function emi(p,r,y){
+let m=r/12/100,n=y*12;
+return p*m*Math.pow(1+m,n)/(Math.pow(1+m,n)-1);
+}
+
+function calculate(){
+
+let b=Number(document.getElementById("bill").value);
+
+if(!b||b<500||b>500000){
+alert("₹500 से ₹5,00,000 के बीच बिल डालें");
+return;
+}
+
+let kw=Math.max(1,Math.ceil(((b/8/30)/7)*10)/10);
+let gross=kw*rate(kw);
+let sub=subsidy(kw);
+let net=Math.max(0,gross-sub);
+let day=kw*7;
+let mon=day*30;
+
+document.getElementById("results").style.display="block";
+
+document.getElementById("kw").textContent=kw.toFixed(1)+" kW";
+document.getElementById("billOut").textContent=money(b);
+document.getElementById("dailyOut").textContent=day.toFixed(1)+" Units";
+document.getElementById("monthlyOut").textContent=Math.round(mon).toLocaleString("en-IN")+" Units";
+document.getElementById("priceOut").textContent=money(gross);
+document.getElementById("subsidyOut").textContent=money(sub);
+document.getElementById("afterOut").textContent=money(net);
+
+document.getElementById("emiBody").innerHTML=[3,5,7,10].map(y=>
+`<tr><td>${y} Years</td><td>${money(emi(net,.07,y))}</td></tr>`
+).join("");
+
+let msg=
+`USF SOLAR Calculation%0A`+
+`Bill: ${money(b)}%0A`+
+`System: ${kw.toFixed(1)} kW%0A`+
+`Generation: ${Math.round(mon)} Units/month%0A`+
+`Price: ${money(gross)}%0A`+
+`Subsidy: ${money(sub)}%0A`+
+`After Subsidy: ${money(net)}`;
+
+document.getElementById("wa").href=
+"https://wa.me/917487865366?text="+msg;
+}
+</script>
+
+</body>
+</html>
