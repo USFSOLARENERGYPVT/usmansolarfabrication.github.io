@@ -1,1 +1,547 @@
+<!DOCTYPE html>
+<html lang="hi">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>USF SOLAR | Enquiry</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+    url("IMG20260628145430.jpg") center/cover fixed;
+    color:#fff;
+}
+
+.header{
+    width:100%;
+    padding:15px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:rgba(0,0,0,.75);
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.logo{
+    height:55px;
+    width:auto;
+}
+
+.back-btn{
+    text-decoration:none;
+    color:#fff;
+    background:#f5a400;
+    padding:11px 18px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.container{
+    width:92%;
+    max-width:600px;
+    margin:35px auto;
+}
+
+.card{
+    background:rgba(255,255,255,.96);
+    color:#222;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 10px 35px rgba(0,0,0,.5);
+}
+
+h1{
+    text-align:center;
+    color:#e68a00;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
+}
+
+label{
+    display:block;
+    margin:15px 0 7px;
+    font-weight:bold;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:9px;
+    font-size:16px;
+    outline:none;
+}
+
+input:focus,
+textarea:focus{
+    border-color:#f5a400;
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.bill-box{
+    position:relative;
+}
+
+.bill-box span{
+    position:absolute;
+    left:13px;
+    top:13px;
+    color:#555;
+    font-weight:bold;
+}
+
+.bill-box input{
+    padding-left:35px;
+}
+
+.location-box{
+    display:flex;
+    gap:8px;
+}
+
+.location-box input{
+    flex:1;
+}
+
+.location-btn{
+    border:none;
+    background:#168b45;
+    color:#fff;
+    padding:0 14px;
+    border-radius:9px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.location-status{
+    font-size:13px;
+    margin-top:7px;
+    color:#666;
+}
+
+.send-btn{
+    width:100%;
+    border:none;
+    background:#25D366;
+    color:#fff;
+    padding:16px;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    margin-top:25px;
+    cursor:pointer;
+}
+
+.send-btn:hover{
+    background:#1ebe5d;
+}
+
+.whatsapp-icon{
+    margin-right:7px;
+}
+
+.footer{
+    text-align:center;
+    padding:20px;
+    color:#ddd;
+    font-size:14px;
+}
+
+.required{
+    color:red;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <a href="index.html">
+        <img
+        src="file_0000000087c481fa815729422a1f230e.png"
+        class="logo"
+        alt="USF SOLAR">
+    </a>
+
+    <a href="index.html" class="back-btn">
+        ← Home
+    </a>
+
+</header>
+
+
+<div class="container">
+
+<div class="card">
+
+    <h1>USF SOLAR</h1>
+
+    <p class="subtitle">
+        Solar Installation Enquiry
+    </p>
+
+
+    <form id="enquiryForm">
+
+        <!-- CUSTOMER NAME -->
+
+        <label>
+            Customer Name <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="अपना नाम लिखें"
+            required
+        >
+
+
+        <!-- MOBILE -->
+
+        <label>
+            Mobile Number <span class="required">*</span>
+        </label>
+
+        <input
+            type="tel"
+            id="mobile"
+            placeholder="10 अंकों का मोबाइल नंबर"
+            maxlength="10"
+            inputmode="numeric"
+            required
+        >
+
+
+        <!-- AREA -->
+
+        <label>
+            Area / जगह <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            id="area"
+            placeholder="जैसे: Vadodara, Ahmedabad"
+            required
+        >
+
+
+        <!-- FULL ADDRESS -->
+
+        <label>
+            Full Address <span class="required">*</span>
+        </label>
+
+        <textarea
+            id="address"
+            placeholder="पूरा पता लिखें"
+            required
+        ></textarea>
+
+
+        <!-- ELECTRICITY BILL -->
+
+        <label>
+            Current Electricity Bill
+            <span class="required">*</span>
+        </label>
+
+        <div class="bill-box">
+
+            <span>₹</span>
+
+            <input
+                type="number"
+                id="bill"
+                placeholder="महीने का लगभग बिल"
+                min="0"
+                inputmode="numeric"
+                required
+            >
+
+        </div>
+
+
+        <!-- CURRENT LOCATION -->
+
+        <label>
+            Current Location
+        </label>
+
+        <div class="location-box">
+
+            <input
+                type="text"
+                id="location"
+                placeholder="Location लेने के लिए बटन दबाएं"
+                readonly
+            >
+
+            <button
+                type="button"
+                class="location-btn"
+                onclick="getLocation()">
+
+                📍 Location
+
+            </button>
+
+        </div>
+
+        <div
+            id="locationStatus"
+            class="location-status">
+
+            Location देना optional है।
+
+        </div>
+
+
+        <!-- MESSAGE -->
+
+        <label>
+            Message
+        </label>
+
+        <textarea
+            id="message"
+            placeholder="Solar की जरूरत या कोई सवाल लिखें..."
+        ></textarea>
+
+
+        <!-- SEND BUTTON -->
+
+        <button
+            type="submit"
+            class="send-btn">
+
+            <span class="whatsapp-icon">💬</span>
+            Send Enquiry on WhatsApp
+
+        </button>
+
+    </form>
+
+</div>
+
+</div>
+
+
+<div class="footer">
+    © 2026 USF SOLAR | Solar Energy Solutions
+</div>
+
+
+<script>
+
+/* =========================================
+   CURRENT LOCATION
+========================================= */
+
+function getLocation(){
+
+    const locationInput =
+        document.getElementById("location");
+
+    const status =
+        document.getElementById("locationStatus");
+
+
+    if(!navigator.geolocation){
+
+        status.innerText =
+        "❌ आपके browser में location सुविधा उपलब्ध नहीं है।";
+
+        return;
+    }
+
+
+    status.innerText =
+    "📍 Location प्राप्त की जा रही है...";
+
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position){
+
+            const lat =
+                position.coords.latitude;
+
+            const lon =
+                position.coords.longitude;
+
+
+            const mapLink =
+                "https://www.google.com/maps?q="
+                + lat + "," + lon;
+
+
+            locationInput.value =
+                mapLink;
+
+
+            status.innerText =
+            "✅ Location मिल गई।";
+
+        },
+
+
+        function(error){
+
+            status.innerText =
+            "❌ Location नहीं मिली। कृपया Location Permission Allow करें।";
+
+        },
+
+
+        {
+            enableHighAccuracy:true,
+            timeout:10000,
+            maximumAge:0
+        }
+
+    );
+
+}
+
+
+/* =========================================
+   WHATSAPP ENQUIRY
+========================================= */
+
+document
+.getElementById("enquiryForm")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+
+    const name =
+        document.getElementById("name")
+        .value.trim();
+
+
+    const mobile =
+        document.getElementById("mobile")
+        .value.trim();
+
+
+    const area =
+        document.getElementById("area")
+        .value.trim();
+
+
+    const address =
+        document.getElementById("address")
+        .value.trim();
+
+
+    const bill =
+        document.getElementById("bill")
+        .value.trim();
+
+
+    const location =
+        document.getElementById("location")
+        .value.trim();
+
+
+    const message =
+        document.getElementById("message")
+        .value.trim();
+
+
+    /* MOBILE VALIDATION */
+
+    if(!/^[0-9]{10}$/.test(mobile)){
+
+        alert(
+            "कृपया सही 10 अंकों का मोबाइल नंबर डालें।"
+        );
+
+        return;
+    }
+
+
+    /* WHATSAPP MESSAGE */
+
+    let text =
+`☀️ *USF SOLAR - NEW ENQUIRY*
+
+👤 *Customer Name:*
+${name}
+
+📱 *Mobile Number:*
+${mobile}
+
+📍 *Area / जगह:*
+${area}
+
+🏠 *Full Address:*
+${address}
+
+💡 *Current Electricity Bill:*
+₹${bill} / Month
+
+🗺️ *Current Location:*
+${location || "Location नहीं दी गई"}
+
+💬 *Message:*
+${message || "कोई message नहीं"}
+
+━━━━━━━━━━━━━━━━
+☀️ *USF SOLAR*
+Solar Energy Solutions`;
+
+
+    /* USF SOLAR WHATSAPP NUMBER */
+
+    const whatsappNumber =
+        "917487865366";
+
+
+    const whatsappURL =
+        "https://wa.me/"
+        + whatsappNumber
+        + "?text="
+        + encodeURIComponent(text);
+
+
+    /* OPEN WHATSAPP */
+
+    window.location.href =
+        whatsappURL;
+
+});
+
+</script>
+
+</body>
+</html>
