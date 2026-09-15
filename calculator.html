@@ -1,1 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>USF Solar Calculator | Usman Solar Fabrication</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(135deg,#061a33,#0b355d,#087f8c);
+    min-height:100vh;
+    color:#fff;
+}
+
+.navbar{
+    width:100%;
+    padding:12px 6%;
+    background:rgba(3,18,38,.96);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 15px rgba(0,0,0,.35);
+}
+
+.logo-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-box img{
+    width:55px;
+    height:55px;
+    object-fit:contain;
+    border-radius:50%;
+}
+
+.logo-text{
+    font-weight:bold;
+    font-size:18px;
+    color:#fff;
+}
+
+.logo-text span{
+    display:block;
+    color:#25d366;
+    font-size:12px;
+    margin-top:3px;
+}
+
+.home-btn{
+    text-decoration:none;
+    color:white;
+    background:#087f8c;
+    padding:10px 18px;
+    border-radius:25px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.home-btn:hover{
+    background:#0aa6b5;
+    transform:translateY(-2px);
+}
+
+.container{
+    width:92%;
+    max-width:850px;
+    margin:35px auto 50px;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.title h1{
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+.title p{
+    color:#d5e8f5;
+    font-size:15px;
+}
+
+.calculator{
+    background:rgba(255,255,255,.97);
+    color:#17202a;
+    border-radius:25px;
+    padding:30px;
+    box-shadow:0 15px 45px rgba(0,0,0,.35);
+}
+
+.input-title{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.input-box{
+    position:relative;
+    margin-bottom:20px;
+}
+
+.input-box span{
+    position:absolute;
+    left:15px;
+    top:15px;
+    font-size:19px;
+    font-weight:bold;
+    color:#087f8c;
+}
+
+.input-box input{
+    width:100%;
+    padding:15px 15px 15px 38px;
+    border:2px solid #d5dfe7;
+    border-radius:12px;
+    font-size:19px;
+    outline:none;
+}
+
+.input-box input:focus{
+    border-color:#087f8c;
+}
+
+.calculate-btn{
+    width:100%;
+    border:none;
+    padding:16px;
+    border-radius:13px;
+    background:linear-gradient(90deg,#087f8c,#08a85c);
+    color:white;
+    font-size:19px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.calculate-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(8,127,140,.3);
+}
+
+.results{
+    display:none;
+    margin-top:28px;
+}
+
+.result-title{
+    text-align:center;
+    font-size:24px;
+    margin-bottom:18px;
+    color:#063c63;
+}
+
+.highlight{
+    background:linear-gradient(135deg,#e8fff1,#e8faff);
+    border:2px solid #10a36b;
+    border-radius:18px;
+    padding:20px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.highlight small{
+    display:block;
+    color:#555;
+    margin-bottom:7px;
+}
+
+.highlight strong{
+    font-size:36px;
+    color:#087f8c;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:13px;
+}
+
+.card{
+    background:#f6f9fb;
+    border-radius:14px;
+    padding:17px;
+    border:1px solid #e0e7ec;
+}
+
+.card .label{
+    font-size:13px;
+    color:#666;
+    margin-bottom:7px;
+}
+
+.card .value{
+    font-size:20px;
+    font-weight:bold;
+    color:#123d5a;
+}
+
+.subsidy-card{
+    background:linear-gradient(135deg,#fff6d9,#fff0b8);
+    border:2px solid #e8b52c;
+}
+
+.subsidy-card .value{
+    color:#b27b00;
+}
+
+.cost-card{
+    background:linear-gradient(135deg,#e8fff2,#d8ffec);
+    border:2px solid #16a064;
+}
+
+.cost-card .value{
+    color:#087f58;
+}
+
+.emi-section{
+    margin-top:22px;
+    padding:20px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#edf5ff,#e5f7ff);
+    border:2px solid #b8d8ee;
+}
+
+.emi-section h3{
+    color:#063c63;
+    margin-bottom:8px;
+}
+
+.emi-note{
+    font-size:13px;
+    color:#666;
+    margin-bottom:15px;
+    line-height:1.5;
+}
+
+.emi-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.emi-table th,
+.emi-table td{
+    padding:11px 8px;
+    text-align:center;
+    border-bottom:1px solid #e4e4e4;
+}
+
+.emi-table th{
+    background:#087f8c;
+    color:white;
+    font-size:13px;
+}
+
+.emi-table td{
+    font-size:15px;
+    font-weight:bold;
+    color:#173b55;
+}
+
+.emi-table tr:last-child td{
+    border-bottom:none;
+}
+
+.info{
+    margin-top:20px;
+    padding:16px;
+    border-radius:14px;
+    background:#f8f8f8;
+    border-left:5px solid #087f8c;
+    color:#444;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.whatsapp{
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    margin-top:20px;
+    padding:15px;
+    background:#25d366;
+    color:white;
+    border-radius:13px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.whatsapp:hover{
+    background:#1ebe5d;
+}
+
+.back-home{
+    display:block;
+    text-align:center;
+    margin-top:15px;
+    color:#087f8c;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.footer{
+    text-align:center;
+    padding:25px 10px;
+    color:#c7dce9;
+    font-size:13px;
+}
+
+.error{
+    display:none;
+    color:#d60000;
+    background:#ffecec;
+    padding:10px;
+    border-radius:10px;
+    margin-bottom:15px;
+    text-align:center;
+    font-weight:bold;
+}
+
+@media(max-width:600px){
+
+    .navbar{
+        padding:10px 4%;
+    }
+
+    .logo-box img{
+        width:45px;
+        height:45px;
+    }
+
+    .logo-text{
+        font-size:15px;
+    }
+
+    .home-btn{
+        padding:8px 13px;
+        font-size:13px;
+    }
+
+    .container{
+        width:94%;
+        margin-top:25px;
+    }
+
+    .title h1{
+        font-size:27px;
+    }
+
+    .calculator{
+        padding:20px 15px;
+        border-radius:20px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .highlight strong{
+        font-size:31px;
+    }
+
+    .emi-table th,
+    .emi-table td{
+        font-size:12px;
+        padding:9px 4px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo-box">
+        <img src="usf-logo.png" alt="USF Solar Logo">
+
+        <div class="logo-text">
+            USF SOLAR
+            <span>Usman Solar Fabrication</span>
+        </div>
+    </div>
+
+    <a href="index.html" class="home-btn">
+        🏠 Home
+    </a>
+
+</nav>
+
+
+<div class="container">
+
+    <div class="title">
+        <h1>☀️ Solar Calculator</h1>
+        <p>सिर्फ अपना बिजली बिल डालें और Solar System की अनुमानित जानकारी पाएं</p>
+    </div>
+
+
+    <div class="calculator">
+
+        <div class="input-title">
+            💰 आपका मासिक बिजली बिल
+        </div>
+
+        <div class="input-box">
+
+            <span>₹</span>
+
+            <input
+                type="number"
+                id="bill"
+                min="500"
+                max="500000"
+                placeholder="उदाहरण: 5000"
+                oninput="clearError()"
+            >
+
+        </div>
+
+        <div class="error" id="error">
+            कृपया ₹500 से ₹5,00,000 के बीच बिल राशि डालें।
+        </div>
+
+
+        <button class="calculate-btn" onclick="calculateSolar()">
+            ⚡ Solar Calculation करें
+        </button>
+
+
+        <div class="results" id="results">
+
+            <div class="result-title">
+                📊 आपकी Solar Calculation
+            </div>
+
+
+            <div class="highlight">
+
+                <small>अनुमानित Solar System Capacity</small>
+
+                <strong id="systemSize">
+                    0 kW
+                </strong>
+
+            </div>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="label">
+                        आपका Monthly Bill
+                    </div>
+
+                    <div class="value" id="monthlyBill">
+                        ₹0
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="label">
+                        अनुमानित Monthly Units
+                    </div>
+
+                    <div class="value" id="monthlyUnits">
+                        0 यूनिट
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="label">
+                        अनुमानित Daily Units
+                    </div>
+
+                    <div class="value" id="dailyUnits">
+                        0 यूनिट/day
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="label">
+                        1 kW Generation
+                    </div>
+
+                    <div class="value">
+                        7 यूनिट/day
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="label">
+                        Solar Rate
+                    </div>
+
+                    <div class="value">
+                        ₹49,000 / kW
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="label">
+                        कुल Solar Cost
+                    </div>
+
+                    <div class="value" id="grossCost">
+                        ₹0
+                    </div>
+
+                </div>
+
+
+                <div class="card subsidy-card">
+
+                    <div class="label">
+                        सरकारी Subsidy
+                    </div>
+
+                    <div class="value" id="subsidy">
+                        ₹0
+                    </div>
+
+                </div>
+
+
+                <div class="card cost-card">
+
+                    <div class="label">
+                        Subsidy के बाद अनुमानित Cost
+                    </div>
+
+                    <div class="value" id="netCost">
+                        ₹0
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="emi-section">
+
+                <h3>🏦 अनुमानित Solar Loan EMI</h3>
+
+                <div class="emi-note">
+
+                    EMI केवल अनुमान के लिए है। नीचे 7% वार्षिक ब्याज की
+                    अनुमानित दर पर अलग-अलग loan tenure की EMI दिखाई गई है।
+                    वास्तविक EMI बैंक की ब्याज दर, अवधि और आपकी पात्रता पर निर्भर करेगी।
+
+                </div>
+
+
+                <table class="emi-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Loan अवधि</th>
+                            <th>Loan Amount</th>
+                            <th>Approx EMI / Month</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>3 साल</td>
+                            <td id="loan3">₹0</td>
+                            <td id="emi3">₹0</td>
+                        </tr>
+
+                        <tr>
+                            <td>5 साल</td>
+                            <td id="loan5">₹0</td>
+                            <td id="emi5">₹0</td>
+                        </tr>
+
+                        <tr>
+                            <td>7 साल</td>
+                            <td id="loan7">₹0</td>
+                            <td id="emi7">₹0</td>
+                        </tr>
+
+                        <tr>
+                            <td>10 साल</td>
+                            <td id="loan10">₹0</td>
+                            <td id="emi10">₹0</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div class="info">
+
+                <strong>ℹ️ Calculation कैसे हुई?</strong>
+                <br><br>
+
+                • Electricity tariff अनुमान: ₹8/unit<br>
+
+                • 1 kW Solar लगभग 7 यूनिट/day बनाता है<br>
+
+                • 1 kW Solar = लगभग 210 यूनिट/month<br>
+
+                • Solar rate = ₹49,000/kW<br>
+
+                • PM Surya Ghar subsidy: पहले 2 kW तक ₹30,000/kW,
+                तीसरे kW के लिए ₹18,000/kW; अधिकतम ₹78,000 तक।<br>
+
+                • Subsidy के बाद बची राशि को loan मानकर EMI का अनुमान लगाया गया है।<br>
+
+                • यह calculator केवल अनुमान है। Final quotation, subsidy और loan
+                actual documents, DISCOM और bank approval के अनुसार बदल सकते हैं।
+
+            </div>
+
+
+            <a
+                id="whatsappBtn"
+                class="whatsapp"
+                href="#"
+                target="_blank"
+            >
+                📲 WhatsApp पर Solar Quote भेजें
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        © 2026 USF Solar | Usman Solar Fabrication
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   USF SOLAR CALCULATOR
+   ========================= */
+
+/* Basic assumptions */
+
+const TARIFF_PER_UNIT = 8;
+
+const DAILY_GENERATION_PER_KW = 7;
+
+const SOLAR_RATE_PER_KW = 49000;
+
+const MAX_SUBSIDY = 78000;
+
+
+/* Indian Rupee format */
+
+function rupees(amount){
+
+    return "₹" + Math.round(amount).toLocaleString("en-IN");
+
+}
+
+
+/* Clear error */
+
+function clearError(){
+
+    document.getElementById("error").style.display = "none";
+
+}
+
+
+/* Calculate subsidy */
+
+function calculateSubsidy(systemKW){
+
+    let subsidy = 0;
+
+    /*
+       First 2 kW:
+       ₹30,000 per kW
+
+       Additional 1 kW:
+       ₹18,000
+
+       Maximum:
+       ₹78,000
+    */
+
+    if(systemKW <= 2){
+
+        subsidy = systemKW * 30000;
+
+    }else{
+
+        subsidy = 60000;
+
+        let additionalKW = Math.min(systemKW - 2, 1);
+
+        subsidy += additionalKW * 18000;
+
+    }
+
+    return Math.min(subsidy, MAX_SUBSIDY);
+
+}
+
+
+/* EMI formula */
+
+function calculateEMI(principal, annualRate, years){
+
+    if(principal <= 0){
+        return 0;
+    }
+
+    const monthlyRate = annualRate / 12 / 100;
+
+    const months = years * 12;
+
+    const emi =
+        principal *
+        monthlyRate *
+        Math.pow(1 + monthlyRate, months) /
+        (Math.pow(1 + monthlyRate, months) - 1);
+
+    return emi;
+
+}
+
+
+/* Main calculation */
+
+function calculateSolar(){
+
+    const billInput = document.getElementById("bill");
+
+    const bill = Number(billInput.value);
+
+    const error = document.getElementById("error");
+
+    const results = document.getElementById("results");
+
+
+    /* Validation */
+
+    if(!bill || bill < 500 || bill > 500000){
+
+        error.style.display = "block";
+
+        results.style.display = "none";
+
+        return;
+
+    }
+
+
+    error.style.display = "none";
+
+
+    /*
+       Step 1:
+       Monthly units
+
+       Example:
+       ₹8000 / ₹8 = 1000 units
+    */
+
+    const monthlyUnits = bill / TARIFF_PER_UNIT;
+
+
+    /*
+       Step 2:
+       Daily units
+    */
+
+    const dailyUnits = monthlyUnits / 30;
+
+
+    /*
+       Step 3:
+       Required kW
+
+       1 kW = 7 units/day
+
+       kW = daily units / 7
+    */
+
+    let systemKW = dailyUnits / DAILY_GENERATION_PER_KW;
+
+
+    /*
+       Round up to nearest 0.1 kW
+    */
+
+    systemKW = Math.ceil(systemKW * 10) / 10;
+
+
+    /*
+       Minimum 1 kW
+    */
+
+    if(systemKW < 1){
+
+        systemKW = 1;
+
+    }
+
+
+    /*
+       Step 4:
+       Solar system cost
+    */
+
+    const grossCost = systemKW * SOLAR_RATE_PER_KW;
+
+
+    /*
+       Step 5:
+       Government subsidy
+    */
+
+    const subsidy = calculateSubsidy(systemKW);
+
+
+    /*
+       Step 6:
+       Net customer cost
+    */
+
+    const netCost = Math.max(grossCost - subsidy, 0);
+
+
+    /*
+       Show main results
+    */
+
+    document.getElementById("systemSize").textContent =
+        systemKW.toFixed(1) + " kW";
+
+
+    document.getElementById("monthlyBill").textContent =
+        rupees(bill);
+
+
+    document.getElementById("monthlyUnits").textContent =
+        Math.round(monthlyUnits).toLocaleString("en-IN") + " यूनिट";
+
+
+    document.getElementById("dailyUnits").textContent =
+        dailyUnits.toFixed(1) + " यूनिट/day";
+
+
+    document.getElementById("grossCost").textContent =
+        rupees(grossCost);
+
+
+    document.getElementById("subsidy").textContent =
+        rupees(subsidy);
+
+
+    document.getElementById("netCost").textContent =
+        rupees(netCost);
+
+
+    /*
+       Loan amount = net cost
+       Interest assumption = 7%
+    */
+
+    const interestRate = 7;
+
+
+    /* 3 years */
+
+    const emi3 = calculateEMI(
+        netCost,
+        interestRate,
+        3
+    );
+
+
+    /* 5 years */
+
+    const emi5 = calculateEMI(
+        netCost,
+        interestRate,
+        5
+    );
+
+
+    /* 7 years */
+
+    const emi7 = calculateEMI(
+        netCost,
+        interestRate,
+        7
+    );
+
+
+    /* 10 years */
+
+    const emi10 = calculateEMI(
+        netCost,
+        interestRate,
+        10
+    );
+
+
+    document.getElementById("loan3").textContent =
+        rupees(netCost);
+
+
+    document.getElementById("loan5").textContent =
+        rupees(netCost);
+
+
+    document.getElementById("loan7").textContent =
+        rupees(netCost);
+
+
+    document.getElementById("loan10").textContent =
+        rupees(netCost);
+
+
+    document.getElementById("emi3").textContent =
+        rupees(emi3);
+
+
+    document.getElementById("emi5").textContent =
+        rupees(emi5);
+
+
+    document.getElementById("emi7").textContent =
+        rupees(emi7);
+
+
+    document.getElementById("emi10").textContent =
+        rupees(emi10);
+
+
+    /*
+       WhatsApp message
+    */
+
+    const message =
+
+`☀️ USF SOLAR CALCULATION
+
+💰 Monthly Bill: ${rupees(bill)}
+
+⚡ Estimated Units: ${Math.round(monthlyUnits)} units/month
+
+☀️ Required Solar: ${systemKW.toFixed(1)} kW
+
+💵 Solar Cost: ${rupees(grossCost)}
+
+🏛️ Estimated Government Subsidy: ${rupees(subsidy)}
+
+💰 Cost After Subsidy: ${rupees(netCost)}
+
+🏦 Approx EMI:
+3 Years: ${rupees(emi3)}/month
+5 Years: ${rupees(emi5)}/month
+7 Years: ${rupees(emi7)}/month
+10 Years: ${rupees(emi10)}/month
+
+USF Solar
+Usman Solar Fabrication`;
+
+
+    document.getElementById("whatsappBtn").href =
+        "https://wa.me/917487865366?text=" +
+        encodeURIComponent(message);
+
+
+    /*
+       Show results
+    */
+
+    results.style.display = "block";
+
+
+    /*
+       Scroll to results
+    */
+
+    setTimeout(function(){
+
+        results.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+    },100);
+
+}
+
+</script>
+
+</body>
+              </html>
