@@ -1,1 +1,1284 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<meta name="description"
+content="USF SOLAR - Clean Energy, Bright Future. Solar solutions, solar structure and fabrication, installation and consultation.">
+
+<title>USF SOLAR | Usman Solar Fabrication</title>
+
+<style>
+:root{
+  --blue:#07549b;
+  --dark:#062c50;
+  --yellow:#ffc400;
+  --green:#10a63a;
+  --light:#f5f9fc;
+  --text:#17324d;
+  --muted:#65788a;
+  --white:#fff;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--text);
+  background:#fff;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.container{
+  width:min(1160px,92%);
+  margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#fff;
+  box-shadow:0 2px 16px #082f4a22;
+}
+
+.nav{
+  min-height:74px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.logo{
+  width:150px;
+  height:58px;
+  object-fit:contain;
+}
+
+.navlinks{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin-left:auto;
+  font-weight:700;
+  color:#244b6b;
+}
+
+.navlinks a:hover{
+  color:var(--blue);
+}
+
+.wa-top{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:#13a83d;
+  color:#fff;
+  padding:10px 16px;
+  border-radius:28px;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.wa-icon{
+  font-size:20px;
+}
+
+/* LANGUAGE BUTTONS */
+
+.language-box{
+  display:flex;
+  gap:5px;
+  align-items:center;
+}
+
+.lang-btn{
+  border:1px solid #07549b;
+  background:#fff;
+  color:#07549b;
+  padding:7px 9px;
+  border-radius:7px;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.lang-btn:hover,
+.lang-btn.active{
+  background:#07549b;
+  color:#fff;
+}
+
+.menu-toggle{
+  display:none;
+  border:0;
+  background:#07549b;
+  color:#fff;
+  border-radius:10px;
+  padding:10px 13px;
+  font-size:22px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  min-height:470px;
+  background:
+    linear-gradient(90deg,#052f58e8 0%,#07549bb8 43%,#00000020 72%),
+    url('solar-structure-hero.jpg') center/cover;
+  display:flex;
+  align-items:center;
+  color:#fff;
+}
+
+.hero-content{
+  padding:65px 0;
+  width:65%;
+}
+
+.kicker{
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:4px;
+}
+
+.hero h1{
+  font-size:clamp(48px,7vw,78px);
+  line-height:.95;
+  margin:0 0 12px;
+  font-weight:900;
+}
+
+.hero h1 span{
+  color:var(--yellow);
+}
+
+.hero h3{
+  font-size:24px;
+  margin:0 0 18px;
+}
+
+.hero p{
+  font-size:17px;
+  line-height:1.6;
+  max-width:620px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:13px;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 23px;
+  border-radius:30px;
+  font-weight:900;
+}
+
+.btn-yellow{
+  background:var(--yellow);
+  color:#123a58;
+}
+
+.btn-wa{
+  background:#12a83d;
+  color:#fff;
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+  padding:58px 0;
+}
+
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:25px;
+}
+
+.section-head h2{
+  margin:0;
+  color:var(--dark);
+  font-size:34px;
+}
+
+.section-head p{
+  margin:7px 0 0;
+  color:var(--muted);
+}
+
+.view-all{
+  border:1px solid #4d84ad;
+  color:var(--blue);
+  padding:10px 17px;
+  border-radius:22px;
+  font-weight:800;
+}
+
+/* ================= SERVICES ================= */
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.card{
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 8px 24px #163c5520;
+  border:1px solid #dbe8f1;
+}
+
+.card-img{
+  height:155px;
+  width:100%;
+  object-fit:cover;
+  background:#e9f1f6;
+}
+
+.card-body{
+  padding:16px;
+}
+
+.card h3{
+  margin:0 0 7px;
+  font-size:18px;
+  color:#153b5c;
+}
+
+.card p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.45;
+  font-size:14px;
+}
+
+.card-arrow{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:12px;
+  color:#fff;
+}
+
+.card-arrow span{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--blue);
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+  background:#f3f8fb;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+  align-items:center;
+}
+
+.about-img{
+  width:100%;
+  height:330px;
+  object-fit:cover;
+  border-radius:4px;
+}
+
+.about h2{
+  font-size:34px;
+  margin:0 0 13px;
+  color:var(--dark);
+}
+
+.about h2 span{
+  color:#e9b500;
+}
+
+.about p{
+  color:#536c80;
+  line-height:1.7;
+}
+
+.features{
+  display:flex;
+  gap:18px;
+  margin-top:24px;
+}
+
+.feature{
+  display:flex;
+  gap:9px;
+  align-items:center;
+  flex:1;
+  font-weight:800;
+  font-size:13px;
+  color:#375873;
+}
+
+.feature-icon{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#fff;
+  box-shadow:0 4px 14px #0a507020;
+  font-size:22px;
+}
+
+/* ================= CONSULTATION ================= */
+
+.consult{
+  background:linear-gradient(100deg,#07549b,#0a72c9);
+  color:#fff;
+  padding:42px 0;
+}
+
+.consult-grid{
+  display:grid;
+  grid-template-columns:1fr 1.15fr;
+  gap:30px;
+  align-items:center;
+}
+
+.consult h2{
+  font-size:31px;
+  margin:0 0 10px;
+}
+
+.consult p{
+  line-height:1.55;
+}
+
+.form{
+  background:#ffffff18;
+  border:1px solid #ffffff44;
+  padding:16px;
+  border-radius:10px;
+}
+
+.form h3{
+  margin:0 0 10px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:8px;
+}
+
+.form input,
+.form select,
+.form textarea{
+  width:100%;
+  border:0;
+  border-radius:5px;
+  padding:12px;
+  font:inherit;
+}
+
+.form textarea{
+  height:82px;
+  resize:none;
+}
+
+.form .full{
+  grid-column:span 3;
+}
+
+.send{
+  border:0;
+  background:var(--yellow);
+  color:#123a58;
+  font-weight:900;
+  border-radius:5px;
+  padding:12px;
+  cursor:pointer;
+  width:100%;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+  padding:30px 0;
+  background:#f7fafc;
+}
+
+.contact-row{
+  display:grid;
+  grid-template-columns:1.2fr 1fr 1fr 1fr;
+  gap:18px;
+  align-items:center;
+}
+
+.contact-title h2{
+  margin:0 0 6px;
+  color:var(--dark);
+  font-size:24px;
+}
+
+.contact-title p{
+  margin:0;
+  color:var(--muted);
+}
+
+.contact-box{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.contact-box .ci{
+  font-size:25px;
+}
+
+.contact-box small{
+  display:block;
+  color:#64798b;
+}
+
+.contact-box strong{
+  color:#153b5c;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+}
+
+.gallery img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:#062c50;
+  color:#fff;
+  padding:38px 0 0;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1.2fr 1fr;
+  gap:30px;
+}
+
+.footer-logo{
+  width:190px;
+  height:75px;
+  object-fit:contain;
+  object-position:left center;
+}
+
+footer h3{
+  margin:0 0 13px;
+}
+
+footer ul{
+  padding:0;
+  margin:0;
+  list-style:none;
+  line-height:1.9;
+  color:#c7d8e7;
+}
+
+footer p{
+  color:#c7d8e7;
+  line-height:1.55;
+}
+
+.footer-wa{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  background:#13a83d;
+  padding:12px 18px;
+  border-radius:28px;
+  font-weight:900;
+}
+
+.copyright{
+  margin-top:28px;
+  padding:14px 0;
+  border-top:1px solid #ffffff20;
+  color:#b9ccdb;
+  font-size:13px;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+}
+
+/* ================= FLOATING WHATSAPP ================= */
+
+.float-wa{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:120;
+  background:#13a83d;
+  color:#fff;
+  border-radius:50px;
+  padding:13px 18px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-weight:900;
+  box-shadow:0 8px 25px #0005;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1000px){
+
+  .nav{
+    min-height:68px;
+  }
+
+  .logo{
+    width:125px;
+  }
+
+  .navlinks{
+    display:none;
+  }
+
+  .menu-toggle{
+    display:block;
+    margin-left:auto;
+  }
+
+  .wa-top{
+    display:none;
+  }
+
+  .language-box{
+    margin-left:auto;
+  }
+
+  .topbar.open .navlinks{
+    display:flex;
+    position:absolute;
+    left:0;
+    right:0;
+    top:68px;
+    background:#fff;
+    padding:18px 4%;
+    flex-direction:column;
+    align-items:flex-start;
+    box-shadow:0 8px 18px #0002;
+  }
+
+  .hero-content{
+    width:80%;
+    padding:55px 0;
+  }
+
+  .services{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .about-grid,
+  .consult-grid{
+    grid-template-columns:1fr;
+  }
+
+  .contact-row{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .gallery{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:650px){
+
+  .language-box{
+    gap:3px;
+  }
+
+  .lang-btn{
+    padding:6px 7px;
+    font-size:11px;
+  }
+
+  .container{
+    width:90%;
+  }
+
+  .hero{
+    min-height:570px;
+  }
+
+  .hero-content{
+    width:100%;
+    padding:50px 0;
+  }
+
+  .hero h1{
+    font-size:53px;
+  }
+
+  .hero h3{
+    font-size:19px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .section{
+    padding:43px 0;
+  }
+
+  .section-head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .section-head h2{
+    font-size:29px;
+  }
+
+  .services{
+    grid-template-columns:1fr;
+  }
+
+  .card-img{
+    height:185px;
+  }
+
+  .about-img{
+    height:245px;
+  }
+
+  .about h2{
+    font-size:29px;
+  }
+
+  .features{
+    flex-direction:column;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form .full{
+    grid-column:span 1;
+  }
+
+  .contact-row{
+    grid-template-columns:1fr;
+  }
+
+  .gallery{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .gallery img{
+    height:115px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .copyright{
+    flex-direction:column;
+  }
+
+  .float-wa{
+    right:10px;
+    bottom:10px;
+    padding:12px 15px;
+    font-size:13px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar" id="topbar">
+
+  <div class="container nav">
+
+    <a href="#home">
+      <img src="usf-solar-logo.png" class="logo" alt="USF SOLAR">
+    </a>
+
+    <nav class="navlinks">
+
+      <a href="#home" data-i18n="home">होम</a>
+
+      <a href="#about" data-i18n="about">हमारे बारे में</a>
+
+      <a href="#services" data-i18n="services">सेवाएं</a>
+
+      <a href="#projects" data-i18n="projects">प्रोजेक्ट</a>
+
+      <a href="#gallery" data-i18n="gallery">गैलरी</a>
+
+      <a href="#contact" data-i18n="contact">संपर्क</a>
+
+    </nav>
+
+    <div class="language-box">
+
+      <button class="lang-btn active"
+              onclick="changeLanguage('hi')">
+        हिन्दी
+      </button>
+
+      <button class="lang-btn"
+              onclick="changeLanguage('en')">
+        English
+      </button>
+
+      <button class="lang-btn"
+              onclick="changeLanguage('gu')">
+        ગુજરાતી
+      </button>
+
+    </div>
+
+    <a class="wa-top"
+       href="https://wa.me/917487865366"
+       target="_blank"
+       rel="noopener">
+
+      <span class="wa-icon">🟢</span>
+      7487865366
+
+    </a>
+
+    <button class="menu-toggle"
+            onclick="document.getElementById('topbar').classList.toggle('open')"
+            aria-label="Menu">
+      ☰
+    </button>
+
+  </div>
+
+</header>
+
+
+<main>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+  <div class="container hero-content">
+
+    <div class="kicker" data-i18n="welcome">
+      स्वागत है
+    </div>
+
+    <h1>
+      USF <span>SOLAR</span>
+    </h1>
+
+    <h3 data-i18n="heroTitle">
+      स्वच्छ ऊर्जा • उज्ज्वल भविष्य
+    </h3>
+
+    <p data-i18n="heroText">
+      हम घरों, व्यवसायों और उद्योगों के लिए उच्च गुणवत्ता वाले सोलर समाधान प्रदान करते हैं। हमारा लक्ष्य भरोसेमंद सोलर इंस्टॉलेशन, मजबूत सोलर स्ट्रक्चर और स्वच्छ नवीकरणीय ऊर्जा उपलब्ध कराना है।
+    </p>
+
+    <div class="hero-buttons">
+
+      <a class="btn btn-yellow"
+         href="#services"
+         data-i18n="exploreServices">
+        हमारी सेवाएं देखें →
+      </a>
+
+      <a class="btn btn-wa"
+         href="https://wa.me/917487865366"
+         target="_blank"
+         rel="noopener"
+         data-i18n="chatWhatsapp">
+        🟢 WhatsApp पर संपर्क करें
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SERVICES ================= -->
+
+<section class="section" id="services">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <h2 data-i18n="servicesTitle">
+          हमारी सेवाएं
+        </h2>
+
+        <p data-i18n="servicesSubtitle">
+          बेहतर भविष्य के लिए प्रोफेशनल सोलर समाधान।
+        </p>
+
+      </div>
+
+      <a class="view-all"
+         href="#services"
+         data-i18n="viewServices">
+        सभी सेवाएं देखें →
+      </a>
+
+    </div>
+
+
+    <div class="services">
+
+      <article class="card">
+
+        <img class="card-img"
+             src="project-1.png"
+             alt="Residential Solar">
+
+        <div class="card-body">
+
+          <h3 data-i18n="service1Title">
+            घरेलू सोलर
+          </h3>
+
+          <p data-i18n="service1Text">
+            आपके घर के लिए स्वच्छ और किफायती ऊर्जा समाधान।
+          </p>
+
+          <div class="card-arrow">
+            <span>→</span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="card">
+
+        <img class="card-img"
+             src="solar-structure-hero.jpg"
+             alt="Commercial Solar">
+
+        <div class="card-body">
+
+          <h3 data-i18n="service2Title">
+            कमर्शियल और इंडस्ट्रियल सोलर
+          </h3>
+
+          <p data-i18n="service2Text">
+            आपके व्यवसाय और उद्योग के लिए भरोसेमंद सोलर समाधान।
+          </p>
+
+          <div class="card-arrow">
+            <span>→</span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="card">
+
+        <img class="card-img"
+             src="solar-structure-hero.jpg"
+             alt="Solar Structure">
+
+        <div class="card-body">
+
+          <h3 data-i18n="service3Title">
+            सोलर स्ट्रक्चर और फैब्रिकेशन
+          </h3>
+
+          <p data-i18n="service3Text">
+            मजबूत, टिकाऊ और जरूरत के अनुसार सोलर स्ट्रक्चर।
+          </p>
+
+          <div class="card-arrow">
+            <span>→</span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="card">
+
+        <img class="card-img"
+             src="project-2.png"
+             alt="Solar Installation">
+
+        <div class="card-body">
+
+          <h3 data-i18n="service4Title">
+            सोलर इंस्टॉलेशन
+          </h3>
+
+          <p data-i18n="service4Text">
+            अनुभवी टीम द्वारा प्रोफेशनल सोलर इंस्टॉलेशन।
+          </p>
+
+          <div class="card-arrow">
+            <span>→</span>
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="section about" id="about">
+
+  <div class="container about-grid">
+
+    <img class="about-img"
+         src="solar-structure-hero.jpg"
+         alt="USF SOLAR">
+
+    <div>
+
+      <h2 data-i18n="aboutTitle">
+        हमारे बारे में
+      </h2>
+
+      <p data-i18n="aboutText">
+        USF SOLAR भरोसेमंद सोलर ऊर्जा समाधान, बेहतर क्वालिटी फैब्रिकेशन और प्रोफेशनल इंस्टॉलेशन पर ध्यान देता है। हम घरों, व्यवसायों और उद्योगों की जरूरतों के अनुसार स्वच्छ ऊर्जा को आसान और उपयोगी बनाने का प्रयास करते हैं।
+      </p>
+
+
+      <div class="features">
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            🍃
+          </div>
+
+          <span data-i18n="feature1">
+            स्वच्छ<br>ऊर्जा
+          </span>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            🛡️
+          </div>
+
+          <span data-i18n="feature2">
+            उच्च गुणवत्ता<br>और भरोसेमंद
+          </span>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            👥
+          </div>
+
+          <span data-i18n="feature3">
+            अनुभवी<br>टीम
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= CONSULTATION ================= -->
+
+<section class="consult" id="projects">
+
+  <div class="container consult-grid">
+
+    <div>
+
+      <div style="font-size:50px">
+        🎧
+      </div>
+
+      <h2 data-i18n="consultTitle">
+        सोलर कंसल्टेशन लें
+      </h2>
+
+      <p data-i18n="consultText">
+        हमारे विशेषज्ञों से बात करें और अपनी जरूरत के लिए सबसे अच्छा सोलर समाधान प्राप्त करें।
+      </p>
+
+      <a class="btn btn-yellow"
+         href="https://wa.me/917487865366"
+         target="_blank"
+         rel="noopener"
+         data-i18n="bookNow">
+        अभी संपर्क करें →
+      </a>
+
+    </div>
+
+
+    <form class="form"
+          onsubmit="sendWhatsApp(event)">
+
+      <h3 data-i18n="quickEnquiry">
+        जल्दी पूछताछ करें
+      </h3>
+
+      <div class="form-grid">
+
+        <input id="name"
+               data-i18n-placeholder="namePlaceholder"
+               placeholder="आपका नाम"
+               required>
+
+        <input id="phone"
+               data-i18n-placeholder="phonePlaceholder"
+               placeholder="आपका मोबाइल नंबर"
+               required>
+
+
+        <select id="service">
+
+          <option data-i18n="selectService">
+            सेवा चुनें
+          </option>
+
+          <option data-i18n="optionResidential">
+            घरेलू सोलर
+          </option>
+
+          <option data-i18n="optionCommercial">
+            कमर्शियल और इंडस्ट्रियल सोलर
+          </option>
+
+          <option data-i18n="optionStructure">
+            सोलर स्ट्रक्चर और फैब्रिकेशन
+          </option>
+
+          <option data-i18n="optionInstallation">
+            सोलर इंस्टॉलेशन
+          </option>
+
+        </select>
+
+
+        <select id="service2">
+
+          <option data-i18n="selectService2">
+            अन्य सेवा चुनें
+          </option>
+
+          <option data-i18n="optionConsultation">
+            सोलर कंसल्टेशन
+          </option>
+
+          <option data-i18n="optionSolarStructure">
+            सोलर स्ट्रक्चर
+          </option>
+
+          <option data-i18n="optionInstall">
+            इंस्टॉलेशन
+          </option>
+
+        </select>
+
+
+        <textarea id="message"
+                  class="full"
+                  data-i18n-placeholder="messagePlaceholder"
+                  placeholder="आपका संदेश"></textarea>
+
+
+        <button class="send full"
+                type="submit"
+                data-i18n="sendMessage">
+          संदेश भेजें ➤
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact" id="contact">
+
+  <div class="container contact-row">
+
+    <div class="contact-title">
+
+      <h2 data-i18n="contactTitle">
+        आज ही हमसे संपर्क करें
+      </h2>
+
+      <p data-i18n="contactText">
+        सोलर समाधान के लिए अभी कॉल या WhatsApp करें।
+      </p>
+
+    </div>
+
+
+    <a class="contact-box"
+       href="https://wa.me/917487865366"
+       target="_blank"
+       rel="noopener">
+
+      <span class="ci">🟢</span>
+
+      <span>
+
+        <small data-i18n="chatWhatsappSmall">
+          WhatsApp पर बात करें
+        </small>
+
+        <strong>
+          7487865366
+        </strong>
+
+      </span>
+
+    </a>
+
+
+    <a class="contact-box"
+       href="tel:+917487865366">
+
+      <span class="ci">
+        ☎️
+      </span>
+
+      <span>
+
+        <small data-i18n="callUs">
+          हमें कॉल करें
+        </small>
+
+        <strong>
+          7487865366
+        </strong>
+
+      </span>
+
+    </a>
+
+
+    <div class="contact-box">
+
+      <span class="ci">
+        📍
+      </span>
+
+      <span>
+
+        <small data-i18n="location">
+          स्थान
+        </small>
+
+        <strong>
+          India
+        </strong>
+
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= GALLERY ================= -->
+
+<section class="section" id="gallery">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <h2 data-i18n="galleryTitle">
+          हमारा काम
+        </h2>
+
+        <p data-i18n="galleryText">
+          हमारे सोलर काम और इंस्टॉलेशन की कुछ तस्वीरें।
+          
