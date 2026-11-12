@@ -1,1 +1,373 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>USF SOLAR | Material Catalogue</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;font-family:Arial,sans-serif;
+ background:#f1f8fb;color:#17202a
+}
+nav{
+ background:#031226;padding:10px 5%;
+ display:flex;align-items:center;
+ justify-content:space-between;gap:10px
+}
+.brand{display:flex;align-items:center;gap:10px;
+ color:white;font-weight:bold;font-size:20px}
+.brand img{width:48px;height:48px;object-fit:contain}
+nav a{color:white;text-decoration:none;margin-right:15px}
+.lang{padding:9px;border-radius:20px;border:0}
+.head{
+ text-align:center;color:white;
+ background:linear-gradient(135deg,#063c63,#087f8c);
+ padding:55px 15px
+}
+.head h1{font-size:36px;margin:0 0 12px}
+.head p{line-height:1.6}
+.grid{
+ max-width:1100px;margin:35px auto;
+ padding:0 18px;
+ display:grid;grid-template-columns:repeat(2,1fr);
+ gap:22px
+}
+.card{
+ background:white;border-radius:17px;overflow:hidden;
+ box-shadow:0 5px 22px #00000015;
+ border:1px solid #e4edf2
+}
+.product-img{
+ width:100%;height:230px;object-fit:cover;
+ background:#eaf2f5;cursor:pointer
+}
+.content{padding:20px}
+.content h2{color:#063c63;margin:0 0 10px;font-size:21px}
+.content p{color:#666;line-height:1.6;margin:5px 0 15px}
+.tag{
+ display:inline-block;background:#e4f7f5;color:#087f8c;
+ padding:6px 11px;border-radius:20px;
+ font-size:12px;font-weight:bold
+}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.btn{
+ display:inline-block;text-decoration:none;
+ padding:11px 14px;border-radius:8px;
+ font-weight:bold;font-size:13px
+}
+.video{background:#063c63;color:white}
+.enquiry{background:#25d366;color:white}
+.bottom{text-align:center;padding:20px 15px 50px}
+.note{max-width:800px;margin:25px auto;color:#666;line-height:1.7}
+footer{text-align:center;background:#031226;color:white;padding:25px}
+footer img{width:60px;height:60px;object-fit:contain}
+.modal{
+ display:none;position:fixed;inset:0;
+ background:#000e;z-index:99999;
+ align-items:center;justify-content:center;padding:20px
+}
+.modal img{max-width:95%;max-height:85vh;object-fit:contain}
+.close{
+ position:absolute;top:20px;right:25px;
+ color:white;font-size:35px;cursor:pointer
+}
+@media(max-width:650px){
+ .grid{grid-template-columns:1fr}
+ .head h1{font-size:29px}
+ nav a{display:none}
+ .product-img{height:220px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="brand">
+<img src="IMG_20261105_174131.png" alt="USF Solar">
+USF SOLAR
+</div>
+
+<div>
+<a href="index.html" data-k="home">Home</a>
+<a href="calculator.html" data-k="calculator">Calculator</a>
+<select class="lang" id="language">
+<option value="hi">🇮🇳 हिंदी</option>
+<option value="en">🇬🇧 English</option>
+<option value="gu">🇮🇳 ગુજરાતી</option>
+</select>
+</div>
+</nav>
+
+<header class="head">
+<h1 data-k="title">☀️ USF SOLAR Material Catalogue</h1>
+<p data-k="sub">सोलर इंस्टॉलेशन में उपयोग होने वाले मुख्य मटेरियल</p>
+</header>
+
+<main class="grid">
+
+<!-- GI PIPE 80x40 -->
+<div class="card">
+<img class="product-img"
+src="https://store.steelandpipes.com/cdn/shop/products/3x3inches_08e2c3fe-675e-4084-925d-ae4cfaa8b90f_800x.png?v=1666731750"
+onclick="zoom(this.src)" alt="GI Pipe">
+<div class="content">
+<span class="tag">STRUCTURE MATERIAL</span>
+<h2>GI 80 × 40 mm Pipe</h2>
+<p data-k="gi80">सोलर स्ट्रक्चर के मुख्य फ्रेम के लिए GI पाइप।</p>
+<div class="actions">
+<a class="btn video" target="_blank" href="https://www.youtube.com/results?search_query=GI+80x40+solar+structure">▶ Video Demo</a>
+<a class="btn enquiry" href="https://wa.me/917487865366?text=GI%2080x40%20Pipe%20ki%20jankari%20chahiye">Enquiry</a>
+</div>
+</div>
+</div>
+
+<!-- GI PIPE 40x40 -->
+<div class="card">
+<img class="product-img"
+src="https://store.steelandpipes.com/cdn/shop/products/3x3inches_08e2c3fe-675e-4084-925d-ae4cfaa8b90f_800x.png?v=1666731750"
+onclick="zoom(this.src)" alt="GI Square Pipe">
+<div class="content">
+<span class="tag">STRUCTURE MATERIAL</span>
+<h2>GI 40 × 40 mm Pipe</h2>
+<p data-k="gi40">सोलर पैनल सपोर्ट और स्ट्रक्चर के लिए।</p>
+<div class="actions">
+<a class="btn video" target="_blank" href="https://www.youtube.com/results?search_query=GI+40x40+solar+structure">▶ Video Demo</a>
+<a class="btn enquiry" href="https://wa.me/917487865366?text=GI%2040x40%20Pipe%20ki%20jankari">Enquiry</a>
+</div>
+</div>
+</div>
+
+<!-- SOLAR PANEL -->
+<div class="card">
+<img class="product-img"
+src="https://cdnus.globalso.com/etronpower/%E4%B8%BB%E5%9B%BE-61.jpg"
+onclick="zoom(this.src)" alt="Solar Panel">
+<div class="content">
+<span class="tag">SOLAR MODULE</span>
+<h2 data-k="panel">Solar Panel</h2>
+<p>Adani / Waaree | 585W / 610W</p>
+<div class="actions">
+<a class="btn video" target="_blank" href="https://www.youtube.com/results?search_query=solar+panel+installation">▶ Video Demo</a>
+<a class="btn enquiry" href="https://wa.me/917487865366?text=Solar%20Panel%20ki%20jankari%20chahiye">Enquiry</a>
+</div>
+</div>
+</div>
+
+<!-- INVERTER -->
+<div class="card">
+<img class="product-img"
+src="https://tiimg.tistatic.com/fp/1/005/262/digital-solar-power-inverter-solar-products-equipment--733.jpg"
+onclick="zoom(this.src)" alt="Solar Inverter">
+<div class="content">
+<span class="tag">POWER EQUIPMENT</span>
+<h2 data-k="inverter">Solar Inverter</h2>
+<p>Polycab / Waaree / K-Solar</p>
+<div class="actions">
+<a class="btn video" target="_blank" href="https://www.youtube.com/results?search_query=solar+inverter+working">▶ Video Demo</a>
+<a class="btn enquiry" href="https://wa.me/917487865366?text=Solar%20Inverter%20ki%20jankari">Enquiry</a>
+</div>
+</div>
+</div>
+
+<!-- EARTHING WIRE -->
+<div class="card">
+<img class="product-img"
+src="https://tooles.pl/hpeciai/bc3b39723476d5315bcd42911c40c5ce/pol_pl_Kabel-przewod-solarny-6mm2-czerwony-UV-odporny-H1Z2Z2-K-do-fotowoltaiki-4SUN-4015_3.jpg"
+onclick="zoom(this.src)" alt="Earthing Wire">
+<div class="content">
+<span class="tag">ELECTRICAL MATERIAL</span>
+<h2>4 sq.mm Earthing Wire</h2>
+<p data-k="earth4">सोलर सिस्टम की अर्थिंग के लिए वायर।</p>
+<div class="actions">
+<a class="btn video" target="_blank" href="https://www.youtube.com/results?search_query=solar+earthing+wiring">▶ Video Demo</a>
+<a class="btn enquiry" href="https://wa.me/917487865366?text=Earthing%20Wire%20ki%20jankari">Enquiry</a>
+</div>
+</div>
+</div>
+
+<!-- DC WIRE -->
+<div class="card">
+<img class="product-img"
+src="https://tooles.pl/hpeciai/bc3b39723476d5315bcd42911c40c5ce/pol_pl_Kabel-przewod-solarny-6mm2-czerwony-UV-odporny-H1Z2Z2-K-do-fotowoltaiki-4SUN-4015_3.jpg"
+onclick="zoom(this.src)" alt="Solar DC Wire">
+<div class="content">
+<span class="tag">DC CONNECTION</span>
+<h2>4 sq.mm DC Wire</h2>
+<p data-k="dc">सोलर पैनल से DC कनेक्शन के लिए।</p>
+<div class="actions">
+<a class="btn video" target="_blank" href="https://www.youtube.com/results?search_query=solar+DC+cable+connection">▶ Video Demo</a>
+<a class="btn enquiry" href="https://wa.me/917487865366?text=DC%20Wire%20ki%20jankari">Enquiry</a>
+</div>
+</div>
+</div>
+
+<!-- AC WIRE -->
+<div class="card">
+<img class="product-img"
+src="https://tooles.pl/hpeciai/bc3b39723476d5315bcd42911c40c5ce/pol_pl_Kabel-przewod-solarny-6mm2-czerwony-UV-odporny-H1Z2Z2-K-do-fotowoltaiki-4SUN-4015_3.jpg"
+onclick="zoom(this.src)" alt="Solar AC Wire">
+<div class="content">
+<span class="tag">AC CONNECTION</span>
+<h2>4 sq.mm AC Wire</h2>
+<p data-k="ac">इन्वर्टर से AC कनेक्शन के लिए।</p>
+<div class="actions">
+<a class="btn video" target="_blank" href="https://www.youtube.com/results?search_query=solar+AC+wiring">▶ Video Demo</a>
+<a class="btn enquiry" href="https://wa.me/917487865366?text=AC%20Wire%20ki%20jankari">Enquiry</a>
+</div>
+</div>
+</div>
+
+<!-- 16 EARTHING -->
+<div class="card">
+<img class="product-img"
+src="https://tooles.pl/hpeciai/bc3b39723476d5315bcd42911c40c5ce/pol_pl_Kabel-przewod-solarny-6mm2-czerwony-UV-odporny-H1Z2Z2-K-do-fotowoltaiki-4SUN-4015_3.jpg"
+onclick="zoom(this.src)" alt="Earthing Cable">
+<div class="content">
+<span class="tag">SAFETY MATERIAL</span>
+<h2>16 sq.mm Earthing Wire</h2>
+<p data-k="earth16">अर्थिंग और सुरक्षा कनेक्शन के लिए।</p>
+<div class="actions">
+<a class="btn video" target="_blank" href="https://www.youtube.com/results?search_query=solar+earth+wire+installation">▶ Video Demo</a>
+<a class="btn enquiry" href="https://wa.me/917487865366?text=16%20sqmm%20Earthing%20Wire">Enquiry</a>
+</div>
+</div>
+</div>
+
+<!-- DC BOX -->
+<div class="card">
+<img class="product-img"
+src="https://vigoodsolartek.com/cdn/shop/files/2-in-2-out-600V-dcdb.webp?v=1770959472"
+onclick="zoom(this.src)" alt="Solar DCDB Box">
+<div class="content">
+<span class="tag">PROTECTION BOX</span>
+<h2>DC Box / DCDB</h2>
+<p data-k="dcbox">सोलर DC सुरक्षा और कनेक्शन बॉक्स।</p>
+<div class="actions">
+<a class="btn video" target="_blank" href="https://www.youtube.com/results?search_query=solar+DCDB+box+working">▶ Video Demo</a>
+<a class="btn enquiry" href="https://wa.me/917487865366?text=DC%20Box%20ki%20jankari">Enquiry</a>
+</div>
+</div>
+</div>
+
+<!-- AC BOX -->
+<div class="card">
+<img class="product-img"
+src="https://image.cdn.shpy.in/371968/Havelles-ACDBDCDB-1779034261074.jpeg?format=webp"
+onclick="zoom(this.src)" alt="Solar ACDB Box">
+<div class="content">
+<span class="tag">PROTECTION BOX</span>
+<h2>AC Box / ACDB</h2>
+<p data-k="acbox">सोलर AC सुरक्षा और कनेक्शन बॉक्स।</p>
+<div class="actions">
+<a class="btn video" target="_blank" href="https://www.youtube.com/results?search_query=solar+ACDB+box+working">▶ Video Demo</a>
+<a class="btn enquiry" href="https://wa.me/917487865366?text=AC%20Box%20ki%20jankari">Enquiry</a>
+</div>
+</div>
+</div>
+
+</main>
+
+<div class="bottom">
+<a class="btn enquiry"
+style="padding:16px 25px;font-size:16px"
+target="_blank"
+href="https://wa.me/917487865366?text=Namaste%20USF%20SOLAR%2C%20mujhe%20solar%20material%20ki%20jankari%20chahiye."
+data-k="wa">
+📲 Material की जानकारी WhatsApp पर लें
+</a>
+
+<p class="note" data-k="note">
+सभी तस्वीरें उदाहरण के लिए हैं। वास्तविक ब्रांड, मॉडल और मटेरियल की उपलब्धता के अनुसार अंतिम जानकारी दी जाएगी।
+</p>
+</div>
+
+<div class="modal" id="modal" onclick="this.style.display='none'">
+<span class="close">&times;</span>
+<img id="bigImage" src="" alt="Material Image">
+</div>
+
+<footer>
+<img src="IMG_20261105_174131.png" alt="USF Solar Logo">
+<h3>USF SOLAR</h3>
+<p>Usman Solar Fabrication</p>
+<p>Founder & Owner: Shadab Khan</p>
+</footer>
+
+<script>
+const t={
+hi:{
+home:"होम",calculator:"कैलकुलेटर",
+title:"☀️ USF SOLAR Material Catalogue",
+sub:"सोलर इंस्टॉलेशन में उपयोग होने वाले मुख्य मटेरियल",
+gi80:"सोलर स्ट्रक्चर के मुख्य फ्रेम के लिए GI पाइप।",
+gi40:"सोलर पैनल सपोर्ट और स्ट्रक्चर के लिए।",
+panel:"सोलर पैनल",inverter:"सोलर इन्वर्टर",
+earth4:"सोलर सिस्टम की अर्थिंग के लिए वायर।",
+dc:"सोलर पैनल से DC कनेक्शन के लिए।",
+ac:"इन्वर्टर से AC कनेक्शन के लिए।",
+earth16:"अर्थिंग और सुरक्षा कनेक्शन के लिए।",
+dcbox:"सोलर DC सुरक्षा और कनेक्शन बॉक्स।",
+acbox:"सोलर AC सुरक्षा और कनेक्शन बॉक्स।",
+wa:"📲 मटेरियल की जानकारी WhatsApp पर लें",
+note:"सभी तस्वीरें उदाहरण के लिए हैं। वास्तविक ब्रांड, मॉडल और मटेरियल की उपलब्धता के अनुसार अंतिम जानकारी दी जाएगी।"
+},
+en:{
+home:"Home",calculator:"Calculator",
+title:"☀️ USF SOLAR Material Catalogue",
+sub:"Main materials used in solar installation",
+gi80:"GI pipe for the main solar structure frame.",
+gi40:"For solar panel support and structure.",
+panel:"Solar Panel",inverter:"Solar Inverter",
+earth4:"Wire for solar system earthing.",
+dc:"For solar panel DC connection.",
+ac:"For inverter AC connection.",
+earth16:"For earthing and safety connection.",
+dcbox:"Solar DC protection and connection box.",
+acbox:"Solar AC protection and connection box.",
+wa:"📲 Get Material Information on WhatsApp",
+note:"All pictures are illustrative. Actual brands, models and materials are subject to availability."
+},
+gu:{
+home:"હોમ",calculator:"કેલ્ક્યુલેટર",
+title:"☀️ USF SOLAR Material Catalogue",
+sub:"સોલર ઇન્સ્ટોલેશનમાં વપરાતી મુખ્ય સામગ્રી",
+gi80:"સોલર સ્ટ્રક્ચરના મુખ્ય ફ્રેમ માટે GI પાઇપ.",
+gi40:"સોલર પેનલ સપોર્ટ અને સ્ટ્રક્ચર માટે.",
+panel:"સોલર પેનલ",inverter:"સોલર ઇન્વર્ટર",
+earth4:"સોલર સિસ્ટમ અર્થિંગ માટે વાયર.",
+dc:"સોલર પેનલના DC કનેક્શન માટે.",
+ac:"ઇન્વર્ટરના AC કનેક્શન માટે.",
+earth16:"અર્થિંગ અને સુરક્ષા કનેક્શન માટે.",
+dcbox:"સોલર DC સુરક્ષા અને કનેક્શન બોક્સ.",
+acbox:"સોલર AC સુરક્ષા અને કનેક્શન બોક્સ.",
+wa:"📲 WhatsApp પર મટિરિયલની માહિતી મેળવો",
+note:"તમામ ફોટા ઉદાહરણ માટે છે. વાસ્તવિક બ્રાન્ડ અને મોડેલ ઉપલબ્ધતા મુજબ રહેશે."
+}
+};
+
+function setLang(l){
+document.querySelectorAll("[data-k]").forEach(e=>{
+if(t[l][e.dataset.k])e.innerHTML=t[l][e.dataset.k];
+});
+document.documentElement.lang=l;
+localStorage.setItem("usfLanguage",l);
+}
+
+const language=document.getElementById("language");
+language.value=localStorage.getItem("usfLanguage")||"hi";
+setLang(language.value);
+language.onchange=e=>setLang(e.target.value);
+
+function zoom(src){
+document.getElementById("bigImage").src=src;
+document.getElementById("modal").style.display="flex";
+}
+</script>
+
+</body>
+</html>
+
