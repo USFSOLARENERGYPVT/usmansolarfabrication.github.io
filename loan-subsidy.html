@@ -1,1 +1,537 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gujarat Solar Subsidy Calculator | USF SOLAR</title>
+<meta name="description" content="Gujarat rooftop solar subsidy calculator by USF SOLAR.">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+ font-family:Arial,sans-serif;
+ background:#f2f6fb;
+ color:#17243a;
+ line-height:1.6;
+}
+
+header{
+ background:#082b55;
+ color:white;
+ padding:18px 14px;
+ text-align:center;
+}
+
+.logo{font-size:26px;font-weight:bold;letter-spacing:1px}
+header p{font-size:13px;color:#d9eaff}
+
+.container{
+ max-width:650px;
+ margin:22px auto;
+ padding:15px;
+}
+
+.card{
+ background:white;
+ padding:22px;
+ border-radius:16px;
+ box-shadow:0 5px 22px #00000012;
+ margin-bottom:18px;
+}
+
+h1{font-size:22px;color:#07366a;margin-bottom:8px}
+h2{font-size:19px;color:#07366a;margin-bottom:12px}
+
+.sub{color:#52647a;font-size:14px}
+
+label{
+ display:block;
+ font-weight:bold;
+ margin:16px 0 7px;
+}
+
+select,input{
+ width:100%;
+ padding:13px;
+ border:1px solid #cbd5e1;
+ border-radius:9px;
+ font-size:16px;
+ background:white;
+}
+
+button{
+ border:0;
+ border-radius:9px;
+ padding:14px;
+ font-size:16px;
+ font-weight:bold;
+ cursor:pointer;
+ width:100%;
+ margin-top:15px;
+}
+
+.calculate{background:#0876d1;color:white}
+.whatsapp{background:#159b50;color:white}
+
+.result{
+ display:none;
+ background:#edf8ff;
+ border:1px solid #b8def8;
+ border-radius:12px;
+ padding:17px;
+ margin-top:20px;
+}
+
+.amount{
+ font-size:29px;
+ font-weight:bold;
+ color:#0876d1;
+ margin:5px 0;
+}
+
+.result-row{
+ display:flex;
+ justify-content:space-between;
+ gap:12px;
+ padding:11px 0;
+ border-bottom:1px solid #d6e5f1;
+ font-size:14px;
+}
+
+.result-row strong{text-align:right}
+
+.note{
+ background:#fff8e8;
+ border-left:4px solid #e9a400;
+ padding:13px;
+ border-radius:7px;
+ font-size:13px;
+ margin-top:15px;
+}
+
+.info{
+ background:#f5f8fc;
+ padding:14px;
+ border-radius:10px;
+ margin-top:12px;
+ font-size:14px;
+}
+
+.links a{
+ color:#0876d1;
+ display:block;
+ margin-top:10px;
+}
+
+footer{
+ text-align:center;
+ color:#63738a;
+ font-size:12px;
+ padding:22px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">USF SOLAR</div>
+ <p>Solar Energy • Structure • Installation</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h1>ગુજરાત સોલર સબસિડી કેલ્ક્યુલેટર</h1>
+<h1>गुजरात सोलर सब्सिडी कैलकुलेटर</h1>
+
+<p class="sub">
+अपनी सोलर क्षमता डालें और सरकारी सहायता
+की अनुमानित जानकारी प्राप्त करें।
+</p>
+
+<label>कनेक्शन का प्रकार</label>
+<select id="connection">
+<option value="residential">Residential / घरेलू</option>
+<option value="commercial">Commercial / व्यावसायिक</option>
+<option value="industrial">Industrial / औद्योगिक</option>
+</select>
+
+<label>आपकी कैटेगरी</label>
+<select id="category">
+<option value="general">General / अन्य</option>
+<option value="scst">SC / ST</option>
+</select>
+
+<label>नया सोलर सिस्टम (kW / kWp DC)</label>
+<input
+ type="number"
+ id="capacity"
+ min="0.5"
+ max="100000"
+ step="0.5"
+ value="2"
+ placeholder="जैसे 1, 2, 5, 100, 1000"
+>
+
+<small style="color:#52647a">
+0.5 kW से 1,00,000 kW तक क्षमता दर्ज करें।
+</small>
+
+<label>पहले से लगा हुआ सोलर (kW)</label>
+<input
+ type="number"
+ id="existing"
+ min="0"
+ max="100000"
+ step="0.5"
+ value="0"
+ placeholder="पुरानी क्षमता लिखें"
+>
+
+<label>सिस्टम कमीशन होने की तारीख</label>
+<input type="date" id="commissionDate" value="2026-11-12">
+
+<button class="calculate" onclick="calculateSubsidy()">
+सब्सिडी का अनुमान देखें
+</button>
+
+<div class="result" id="result">
+
+<h2>आपका अनुमानित हिसाब</h2>
+
+<div class="sub">अनुमानित ग्राहक हिस्सा</div>
+<div class="amount" id="customerShare">-</div>
+
+<div class="result-row">
+<span>नया सिस्टम</span>
+<strong id="showCapacity">-</strong>
+</div>
+
+<div class="result-row">
+<span>पुराना सिस्टम</span>
+<strong id="showExisting">-</strong>
+</div>
+
+<div class="result-row">
+<span>कुल सिस्टम क्षमता</span>
+<strong id="totalCapacity">-</strong>
+</div>
+
+<div class="result-row">
+<span>बेंचमार्क लागत</span>
+<strong id="benchmark">-</strong>
+</div>
+
+<div class="result-row">
+<span>केंद्र सरकार की सहायता</span>
+<strong id="central">-</strong>
+</div>
+
+<div class="result-row">
+<span>गुजरात राज्य सहायता</span>
+<strong id="state">-</strong>
+</div>
+
+<div class="result-row">
+<span>ग्राहक की हिस्सेदारी</span>
+<strong id="sharePercent">-</strong>
+</div>
+
+<div class="result-row">
+<span>कुल सरकारी सहायता</span>
+<strong id="assistance">-</strong>
+</div>
+
+<div class="note" id="eligibilityNote">
+अंतिम पात्रता संबंधित DISCOM द्वारा तय होगी।
+</div>
+
+<button class="whatsapp" onclick="sendWhatsApp()">
+WhatsApp पर जानकारी लें
+</button>
+
+</div>
+</div>
+
+<div class="card">
+
+<h2>योजना की जरूरी जानकारी</h2>
+
+<div class="info">
+<b>गुजरात की अतिरिक्त सहायता:</b>
+पात्र घरेलू सिस्टम की कुल DC क्षमता 2.18 kWp तक।
+</div>
+
+<div class="info">
+<b>General कैटेगरी:</b>
+बेंचमार्क लागत का 10% ग्राहक हिस्सा।
+</div>
+
+<div class="info">
+<b>SC/ST कैटेगरी:</b>
+बेंचमार्क लागत का 5% ग्राहक हिस्सा।
+</div>
+
+<div class="info">
+<b>लागू होने की तारीख:</b>
+22 अक्टूबर 2026 से कमीशन किए गए पात्र सिस्टम।
+</div>
+
+<div class="info">
+<b>बेंचमार्क लागत:</b>
+पहले 2 kW के लिए ₹50,000 प्रति kW।
+अतिरिक्त क्षमता के लिए ₹45,000 प्रति kW।
+</div>
+
+<div class="info">
+<b>केंद्र सरकार की सहायता:</b>
+पहले 2 kW पर ₹30,000 प्रति kW और
+अगले 1 kW पर ₹18,000 प्रति kW,
+अधिकतम ₹78,000 तक।
+</div>
+
+<div class="info">
+<b>तीन साल की शर्त:</b>
+गुजरात की अतिरिक्त सहायता लेने के बाद
+तीन साल तक अतिरिक्त rooftop solar क्षमता
+जोड़ने पर प्रतिबंध है।
+</div>
+
+<div class="note">
+यह गुजरात की अतिरिक्त सहायता केवल पात्र
+Residential ग्राहकों के लिए है।
+Commercial और Industrial सिस्टम इस
+घरेलू सहायता के पात्र नहीं हैं।
+अंतिम स्वीकृति DISCOM से प्राप्त करें।
+</div>
+
+</div>
+
+<div class="card links">
+
+<h2>आधिकारिक वेबसाइट</h2>
+
+<a href="https://pmsuryaghar.gov.in/" target="_blank">
+PM Surya Ghar Official Portal
+</a>
+
+<a href="https://suryagujarat.guvnl.in/" target="_blank">
+Gujarat Solar Official Portal
+</a>
+
+<a href="https://www.mgvcl.com/solar-rooftop.php" target="_blank">
+MGVCL Solar Rooftop Information
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>USF SOLAR से संपर्क करें</h2>
+
+<p class="sub">
+Solar installation, quotation और subsidy
+की जानकारी के लिए संपर्क करें।
+</p>
+
+<a href="https://wa.me/917487865366?text=Hello%20USF%20SOLAR%2C%20I%20want%20solar%20subsidy%20information."
+style="display:block;text-align:center;background:#159b50;color:white;padding:14px;border-radius:9px;text-decoration:none;font-weight:bold;margin-top:15px;">
+💬 WhatsApp USF SOLAR
+</a>
+
+<a href="index.html"
+style="display:block;text-align:center;background:#082b55;color:white;padding:14px;border-radius:9px;text-decoration:none;font-weight:bold;margin-top:12px;">
+🏠 Home
+</a>
+
+</div>
+
+</div>
+
+<footer>
+<b>USF – Usman Solar Fabrication</b><br>
+Vadodara, Gujarat<br>
+Professional Solar Panel Installation & Fabrication<br>
+📞 7487865366
+
+<p style="margin-top:10px">
+*यह कैलकुलेटर अनुमान देता है।
+अंतिम लागत, सब्सिडी और पात्रता सरकारी नियमों
+और DISCOM की स्वीकृति पर निर्भर हैं।
+</p>
+</footer>
+
+<script>
+
+let currentEstimate = null;
+
+function money(value){
+return "₹"+Math.round(value).toLocaleString("en-IN");
+}
+
+function benchmarkCost(k){
+return Math.min(k,2)*50000+
+Math.max(k-2,0)*45000;
+}
+
+function centralSubsidy(k){
+return Math.min(
+78000,
+Math.min(k,2)*30000+
+Math.min(Math.max(k-2,0),1)*18000
+);
+}
+
+function calculateSubsidy(){
+
+const capacity=Number(document.getElementById("capacity").value);
+const existing=Number(document.getElementById("existing").value);
+const category=document.getElementById("category").value;
+const connection=document.getElementById("connection").value;
+const date=document.getElementById("commissionDate").value;
+
+if(!Number.isFinite(capacity)||capacity<0.5||capacity>100000){
+alert("0.5 से 1,00,000 kW के बीच नई क्षमता डालें।");
+return;
+}
+
+if(!Number.isFinite(existing)||existing<0||existing>100000){
+alert("पुरानी क्षमता सही दर्ज करें।");
+return;
+}
+
+if(!date){
+alert("कमीशन होने की तारीख चुनें।");
+return;
+}
+
+const total=capacity+existing;
+
+const residential=connection==="residential";
+const gujaratDateEligible=date>="2026-10-22";
+const gujaratCapacityEligible=total<=2.18;
+const gujaratEligible=
+residential&&gujaratDateEligible&&gujaratCapacityEligible;
+
+const centralEligible=residential;
+
+// Central assistance is an estimate for eligible
+// residential PM Surya Ghar installations.
+const central=centralEligible?centralSubsidy(capacity):0;
+
+let benchmark=0;
+let customer=null;
+let state=0;
+let shareRate=null;
+
+if(gujaratEligible){
+
+benchmark=benchmarkCost(capacity);
+
+shareRate=category==="scst"?0.05:0.10;
+
+customer=benchmark*shareRate;
+
+// State assistance is the residual after central CFA
+// and the beneficiary contribution.
+state=Math.max(0,benchmark-central-customer);
+
+}
+
+const assistance=central+state;
+
+currentEstimate={
+capacity,existing,total,category,connection,date,
+benchmark,central,state,customer,assistance,
+gujaratEligible,centralEligible,shareRate
+};
+
+document.getElementById("result").style.display="block";
+
+document.getElementById("showCapacity").textContent=
+capacity.toLocaleString("en-IN")+" kW";
+
+document.getElementById("showExisting").textContent=
+existing.toLocaleString("en-IN")+" kW";
+
+document.getElementById("totalCapacity").textContent=
+total.toLocaleString("en-IN")+" kW";
+
+document.getElementById("benchmark").textContent=
+gujaratEligible?money(benchmark):"लागू नहीं";
+
+document.getElementById("central").textContent=
+centralEligible?money(central):"पात्र नहीं";
+
+document.getElementById("state").textContent=
+gujaratEligible?money(state):"पात्र नहीं";
+
+document.getElementById("customerShare").textContent=
+gujaratEligible?money(customer):"कोटेशन आवश्यक";
+
+document.getElementById("sharePercent").textContent=
+gujaratEligible?(shareRate*100)+"%":"लागू नहीं";
+
+document.getElementById("assistance").textContent=
+gujaratEligible?money(assistance):
+centralEligible?money(central):"पात्र नहीं";
+
+let note="";
+
+if(!residential){
+note="Commercial और Industrial कनेक्शन के लिए PM Surya Ghar की घरेलू CFA तथा गुजरात की नई घरेलू अतिरिक्त सहायता लागू नहीं है। USF से प्रोजेक्ट कोटेशन लें।";
+}
+else if(!gujaratDateEligible){
+note="सिस्टम 22 अक्टूबर 2026 से पहले कमीशन हुआ है। नई गुजरात अतिरिक्त सहायता की बताई गई तारीख की शर्त पूरी नहीं होती।";
+}
+else if(!gujaratCapacityEligible){
+note="पुराने और नए सिस्टम की कुल क्षमता 2.18 kWp से अधिक है। गुजरात की नई अतिरिक्त राज्य सहायता लागू नहीं होगी। पात्र Residential ग्राहक को केंद्रीय CFA अधिकतम ₹78,000 तक मिल सकती है।";
+}
+else{
+note="यह बेंचमार्क आधारित अनुमान है। पुराने सिस्टम की क्षमता, वास्तविक लागत, केंद्रीय CFA और राज्य सहायता की अंतिम गणना DISCOM द्वारा सत्यापित होगी।";
+}
+
+document.getElementById("eligibilityNote").textContent=note;
+
+}
+
+function sendWhatsApp(){
+
+if(!currentEstimate){
+alert("पहले सब्सिडी का अनुमान निकालें।");
+return;
+}
+
+const c=currentEstimate;
+
+const message=
+"Namaste USF SOLAR,%0A%0A"+
+"Solar Subsidy Enquiry%0A"+
+"Connection: "+c.connection+"%0A"+
+"Category: "+c.category+"%0A"+
+"New Capacity: "+c.capacity+" kW%0A"+
+"Existing Capacity: "+c.existing+" kW%0A"+
+"Total Capacity: "+c.total+" kW%0A"+
+"Commission Date: "+c.date+"%0A"+
+"Benchmark Cost: "+(c.gujaratEligible?money(c.benchmark):"Not applicable")+"%0A"+
+"Central Assistance Estimate: "+money(c.central)+"%0A"+
+"Gujarat State Assistance Estimate: "+money(c.state)+"%0A"+
+"Customer Share Estimate: "+(c.gujaratEligible?money(c.customer):"Final quotation required")+"%0A%0A"+
+"Please confirm final eligibility and quotation.";
+
+window.open(
+"https://wa.me/917487865366?text="+message,
+"_blank"
+);
+
+}
+
+</script>
+
+</body>
+</html>
+
