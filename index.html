@@ -607,6 +607,102 @@ footer p{
 
 
 @media(max-width:480px){
+    
+/* USF SOLAR - WATER FLOW PREMIUM BUTTONS */
+
+.btn,
+button,
+a.btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 14px;
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+/* पानी जैसी चलती हुई लहर */
+
+.btn::before,
+button::before,
+a.btn::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -120%;
+    left: -60%;
+    width: 220%;
+    height: 300%;
+
+    background: linear-gradient(
+        120deg,
+        transparent 35%,
+        rgba(255,255,255,0.65) 48%,
+        rgba(255,255,255,0.15) 55%,
+        transparent 70%
+    );
+
+    transform: rotate(20deg);
+    animation: usfWaterFlow 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* हल्की चमक */
+
+.btn::after,
+button::after,
+a.btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+        110deg,
+        transparent,
+        rgba(255,255,255,0.18),
+        transparent
+    );
+    animation: usfShine 5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes usfWaterFlow {
+    0% {
+        left: -150%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+@keyframes usfShine {
+    0%, 100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.btn:hover,
+button:hover,
+a.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+
+/* मोबाइल पर भी हल्की एनिमेशन */
+@media (prefers-reduced-motion: reduce) {
+    .btn::before,
+    button::before,
+    a.btn::before,
+    .btn::after,
+    button::after,
+    a.btn::after {
+        animation: none;
+    }
+}
+    
 
     .logo-box{
         gap:6px;
