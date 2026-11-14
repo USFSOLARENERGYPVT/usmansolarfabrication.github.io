@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -8,6 +9,8 @@
 
 <meta name="description" content="USF SOLAR Waaree and Adani solar panels. Explore watt capacity, TOPCon, DCR, Non-DCR, weight and specifications.">
 
+<link rel="icon" type="image/png" href="/IMG_20261105_174131.png">
+
 <style>
 *{
     margin:0;
@@ -16,27 +19,43 @@
 }
 
 body{
-    font-family:Arial,sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
     background:#071629;
     color:white;
     line-height:1.6;
+    overflow-x:hidden;
 }
 
+/* HEADER */
+
 header{
-    background:linear-gradient(135deg,#00264b,#006b91);
+    background:linear-gradient(135deg,#00264b,#006b91,#041a3b);
     text-align:center;
-    padding:30px 15px;
+    padding:25px 15px 30px;
     border-bottom:3px solid #ffd700;
+}
+
+.usf-logo{
+    width:78px;
+    height:78px;
+    border-radius:50%;
+    object-fit:contain;
+    background:#fff;
+    padding:4px;
+    border:3px solid #ffd700;
+    margin-bottom:10px;
+    box-shadow:0 0 20px rgba(255,215,0,.4);
 }
 
 header h1{
     color:#ffd700;
     font-size:34px;
+    letter-spacing:2px;
 }
 
 header h2{
     font-size:23px;
-    margin-top:8px;
+    margin-top:12px;
 }
 
 header p{
@@ -44,16 +63,39 @@ header p{
     color:#e2f4ff;
 }
 
+/* BRAND LOGOS */
+
+.brand-logos{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:18px;
+    margin:18px auto 8px;
+}
+
+.brand-logos img{
+    width:135px;
+    height:80px;
+    object-fit:contain;
+    background:#fff;
+    padding:9px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,.3);
+}
+
 .back-btn{
     display:inline-block;
     margin-top:18px;
-    background:#ffd700;
+    background:linear-gradient(135deg,#ffd700,#d69e00);
     color:#071629;
     padding:11px 22px;
     border-radius:30px;
     text-decoration:none;
     font-weight:bold;
+    box-shadow:0 4px 12px rgba(0,0,0,.2);
 }
+
+/* MAIN */
 
 .container{
     max-width:1000px;
@@ -65,7 +107,7 @@ header p{
     background:#102c48;
     border:1px solid #23618a;
     border-radius:15px;
-    padding:20px;
+    padding:22px;
     text-align:center;
     margin:20px 0;
 }
@@ -74,6 +116,14 @@ header p{
     color:#ffd700;
     margin-bottom:8px;
 }
+
+.price-note{
+    color:#00e5a0;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+/* BRAND SECTION */
 
 .brand{
     margin-top:30px;
@@ -84,13 +134,13 @@ header p{
 }
 
 .logo-box{
-    background:#ffffff;
-    min-height:115px;
+    background:#fff;
+    min-height:110px;
     border-radius:13px;
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:15px;
+    padding:12px;
     margin-bottom:18px;
 }
 
@@ -123,6 +173,8 @@ header p{
     font-size:25px;
     margin-bottom:18px;
 }
+
+/* PANEL CARDS */
 
 .panel-card{
     background:#183d5c;
@@ -166,18 +218,20 @@ header p{
     margin:4px 3px;
 }
 
+/* CONTACT */
+
 .info{
     background:#073b36;
     border:1px solid #00c99a;
     border-radius:12px;
-    padding:17px;
+    padding:20px;
     margin-top:25px;
     text-align:center;
 }
 
 .whatsapp{
     display:inline-block;
-    background:#00c875;
+    background:linear-gradient(135deg,#00e676,#00a85a);
     color:#001b12;
     padding:13px 25px;
     border-radius:30px;
@@ -185,6 +239,8 @@ header p{
     text-decoration:none;
     margin-top:15px;
 }
+
+/* FOOTER */
 
 footer{
     background:#020d19;
@@ -197,9 +253,35 @@ footer strong{
     color:#ffd700;
 }
 
+/* MOBILE */
+
 @media(max-width:600px){
+
+    header{
+        padding:22px 10px;
+    }
+
     header h1{
         font-size:28px;
+    }
+
+    header h2{
+        font-size:20px;
+    }
+
+    .usf-logo{
+        width:68px;
+        height:68px;
+    }
+
+    .brand-logos{
+        gap:12px;
+    }
+
+    .brand-logos img{
+        width:42%;
+        max-width:135px;
+        height:70px;
     }
 
     .brand-title{
@@ -209,166 +291,226 @@ footer strong{
     .panel-card td{
         font-size:13px;
     }
+
+    .container{
+        padding:10px;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header>
+
+    <img
+        src="/IMG_20261105_174131.png"
+        class="usf-logo"
+        alt="USF SOLAR Logo">
+
     <h1>☀️ USF SOLAR</h1>
+
+    <!-- WAAREE AND ADANI LOGOS -->
+
+    <div class="brand-logos">
+
+        <img
+        src="1747033361.1280.1280__21630.1754478103.1280.1280__18525.webp"
+        alt="Waaree Solar Logo">
+
+        <img
+        src="mtc4nzg5mzi0mq-1787893241-3c43m5me.jpg"
+        alt="Adani Solar Logo">
+
+    </div>
+
     <h2>PREMIUM SOLAR PANELS</h2>
+
     <p>सही पैनल चुनें, बेहतर सोलर उत्पादन पाएं</p>
 
     <a href="index.html" class="back-btn">
         ← मुख्य वेबसाइट पर जाएं
     </a>
+
 </header>
 
 <div class="container">
 
+<!-- INTRO -->
+
 <div class="intro">
+
     <h2>Solar Panel Information Center</h2>
+
     <p>
     यहाँ Waaree और Adani Solar Panels की
     तकनीक, क्षमता और विशेषताओं की जानकारी मिलेगी।
     </p>
-    <p style="color:#00e5a0;font-weight:bold;margin-top:10px;">
+
+    <p class="price-note">
         हमारी वेबसाइट पर पैनल की कीमत प्रदर्शित नहीं की जाती।
     </p>
+
 </div>
 
-<!-- WAAREE SECTION -->
+<!-- WAAREE -->
 
 <section class="brand">
 
-<div class="logo-box">
-    <img src="waaree-logo.png"
-    alt="Waaree Solar Logo"
-    onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+    <div class="logo-box">
 
-    <div class="logo-fallback waaree-text">
-        WAAREE
-        <small style="display:block;font-size:12px;">
-            SOLAR ENERGY
-        </small>
+        <img src="1747033361.1280.1280__21630.1754478103.1280.1280__18525.webp"
+        alt="Waaree Solar Logo"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+
+        <div class="logo-fallback waaree-text">
+            WAAREE
+            <small style="display:block;font-size:12px;">
+                SOLAR ENERGY
+            </small>
+        </div>
+
     </div>
-</div>
 
-<h2 class="brand-title">WAAREE SOLAR PANELS</h2>
+    <h2 class="brand-title">WAAREE SOLAR PANELS</h2>
 
-<div class="panel-card">
-<h3>Waaree 540W – 585W</h3>
+    <div class="panel-card">
 
-<table>
-<tr><td>Capacity</td><td>540W – 585W</td></tr>
-<tr><td>Technology</td><td>Model के अनुसार TOPCon / Mono PERC</td></tr>
-<tr><td>Panel Type</td><td>Bifacial / Monofacial</td></tr>
-<tr><td>DCR Status</td><td>Model के अनुसार DCR / Non-DCR</td></tr>
-<tr><td>Weight</td><td>Exact model datasheet के अनुसार</td></tr>
-<tr><td>Dimensions</td><td>Exact model datasheet के अनुसार</td></tr>
-<tr><td>Warranty</td><td>Manufacturer की model-specific warranty</td></tr>
-</table>
+        <h3>Waaree 540W – 585W</h3>
 
-<div>
-<span class="tag">TOPCon</span>
-<span class="tag">Mono PERC</span>
-<span class="tag">Bifacial</span>
-</div>
-</div>
+        <table>
+            <tr><td>Capacity</td><td>540W – 585W</td></tr>
+            <tr><td>Technology</td><td>Model के अनुसार TOPCon / Mono PERC</td></tr>
+            <tr><td>Panel Type</td><td>Bifacial / Monofacial</td></tr>
+            <tr><td>DCR Status</td><td>Model के अनुसार DCR / Non-DCR</td></tr>
+            <tr><td>Weight</td><td>Exact model datasheet के अनुसार</td></tr>
+            <tr><td>Dimensions</td><td>Exact model datasheet के अनुसार</td></tr>
+            <tr><td>Warranty</td><td>Manufacturer की model-specific warranty</td></tr>
+        </table>
 
-<div class="panel-card">
-<h3>Waaree 610W – 620W</h3>
+        <div>
+            <span class="tag">TOPCon</span>
+            <span class="tag">Mono PERC</span>
+            <span class="tag">Bifacial</span>
+        </div>
 
-<table>
-<tr><td>Capacity</td><td>610W – 620W</td></tr>
-<tr><td>Technology</td><td>Exact model के अनुसार</td></tr>
-<tr><td>Panel Type</td><td>Model के अनुसार</td></tr>
-<tr><td>DCR Status</td><td>Model के अनुसार</td></tr>
-<tr><td>Weight</td><td>Exact model datasheet के अनुसार</td></tr>
-<tr><td>Dimensions</td><td>Exact model datasheet के अनुसार</td></tr>
-<tr><td>Warranty</td><td>Manufacturer की model-specific warranty</td></tr>
-</table>
-</div>
+    </div>
+
+    <div class="panel-card">
+
+        <h3>Waaree 610W – 620W</h3>
+
+        <table>
+            <tr><td>Capacity</td><td>610W – 620W</td></tr>
+            <tr><td>Technology</td><td>Exact model के अनुसार</td></tr>
+            <tr><td>Panel Type</td><td>Model के अनुसार</td></tr>
+            <tr><td>DCR Status</td><td>Model के अनुसार</td></tr>
+            <tr><td>Weight</td><td>Exact model datasheet के अनुसार</td></tr>
+            <tr><td>Dimensions</td><td>Exact model datasheet के अनुसार</td></tr>
+            <tr><td>Warranty</td><td>Manufacturer की model-specific warranty</td></tr>
+        </table>
+
+    </div>
 
 </section>
 
-<!-- ADANI SECTION -->
+<!-- ADANI -->
 
 <section class="brand">
 
-<div class="logo-box">
-    <img src="adani-logo.png"
-    alt="Adani Solar Logo"
-    onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+    <div class="logo-box">
 
-    <div class="logo-fallback adani-text">
-        ADANI
-        <small style="display:block;font-size:12px;">
-            SOLAR
-        </small>
+        <img src="mtc4nzg5mzi0mq-1787893241-3c43m5me.jpg"
+        alt="Adani Solar Logo"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+
+        <div class="logo-fallback adani-text">
+            ADANI
+            <small style="display:block;font-size:12px;">
+                SOLAR
+            </small>
+        </div>
+
     </div>
-</div>
 
-<h2 class="brand-title">ADANI SOLAR PANELS</h2>
+    <h2 class="brand-title">ADANI SOLAR PANELS</h2>
 
-<div class="panel-card">
-<h3>Adani 540W – 585W</h3>
+    <div class="panel-card">
 
-<table>
-<tr><td>Capacity</td><td>540W – 585W</td></tr>
-<tr><td>Technology</td><td>Model के अनुसार</td></tr>
-<tr><td>Panel Type</td><td>Model के अनुसार</td></tr>
-<tr><td>DCR Status</td><td>Model के अनुसार</td></tr>
-<tr><td>Weight</td><td>Exact model datasheet के अनुसार</td></tr>
-<tr><td>Dimensions</td><td>Exact model datasheet के अनुसार</td></tr>
-<tr><td>Warranty</td><td>Manufacturer की model-specific warranty</td></tr>
-</table>
-</div>
+        <h3>Adani 540W – 585W</h3>
 
-<div class="panel-card">
-<h3>Adani 600W – 730W</h3>
+        <table>
+            <tr><td>Capacity</td><td>540W – 585W</td></tr>
+            <tr><td>Technology</td><td>Model के अनुसार</td></tr>
+            <tr><td>Panel Type</td><td>Model के अनुसार</td></tr>
+            <tr><td>DCR Status</td><td>Model के अनुसार</td></tr>
+            <tr><td>Weight</td><td>Exact model datasheet के अनुसार</td></tr>
+            <tr><td>Dimensions</td><td>Exact model datasheet के अनुसार</td></tr>
+            <tr><td>Warranty</td><td>Manufacturer की model-specific warranty</td></tr>
+        </table>
 
-<table>
-<tr><td>Capacity</td><td>600W – 730W</td></tr>
-<tr><td>Technology</td><td>Model के अनुसार TOPCon / अन्य</td></tr>
-<tr><td>Panel Type</td><td>Model के अनुसार</td></tr>
-<tr><td>DCR Status</td><td>Model के अनुसार</td></tr>
-<tr><td>Weight</td><td>Exact model datasheet के अनुसार</td></tr>
-<tr><td>Dimensions</td><td>Exact model datasheet के अनुसार</td></tr>
-<tr><td>Warranty</td><td>Manufacturer की model-specific warranty</td></tr>
-</table>
-</div>
+    </div>
+
+    <div class="panel-card">
+
+        <h3>Adani 600W – 730W</h3>
+
+        <table>
+            <tr><td>Capacity</td><td>600W – 730W</td></tr>
+            <tr><td>Technology</td><td>Model के अनुसार TOPCon / अन्य</td></tr>
+            <tr><td>Panel Type</td><td>Model के अनुसार</td></tr>
+            <tr><td>DCR Status</td><td>Model के अनुसार</td></tr>
+            <tr><td>Weight</td><td>Exact model datasheet के अनुसार</td></tr>
+            <tr><td>Dimensions</td><td>Exact model datasheet के अनुसार</td></tr>
+            <tr><td>Warranty</td><td>Manufacturer की model-specific warranty</td></tr>
+        </table>
+
+    </div>
 
 </section>
 
 <!-- ENQUIRY -->
 
 <div class="info">
-<h2>☀️ USF SOLAR</h2>
 
-<p>
-घर, दुकान, फैक्ट्री और कमर्शियल सोलर सिस्टम के लिए संपर्क करें।
-</p>
+    <h2>☀️ USF SOLAR</h2>
 
-<p style="margin-top:10px;">
-मजबूत स्ट्रक्चर | बेहतरीन मटेरियल | प्रोफेशनल इंस्टॉलेशन
-</p>
+    <p>
+        घर, दुकान, फैक्ट्री और कमर्शियल सोलर सिस्टम के लिए संपर्क करें।
+    </p>
 
-<a class="whatsapp"
-href="https://wa.me/917487865366?text=Hello%20USF%20SOLAR,%20mujhe%20solar%20panel%20ki%20jankari%20chahiye.">
-    WhatsApp Enquiry
-</a>
+    <p style="margin-top:10px;">
+        मजबूत स्ट्रक्चर | बेहतरीन मटेरियल | प्रोफेशनल इंस्टॉलेशन
+    </p>
+
+    <a class="whatsapp"
+    href="https://wa.me/917487865366?text=Hello%20USF%20SOLAR,%20mujhe%20solar%20panel%20ki%20jankari%20chahiye."
+    target="_blank">
+        WhatsApp Enquiry
+    </a>
+
 </div>
 
 </div>
+
+<!-- FOOTER -->
 
 <footer>
-<strong>USF SOLAR</strong>
-<p>Founder & Owner: Shadab Khan</p>
-<p>Vadodara, Gujarat</p>
-<p>© 2026 USF SOLAR</p>
+
+    <strong>USF SOLAR</strong>
+
+    <p>Founder & Owner: Shadab Khan</p>
+
+    <p>Vadodara, Gujarat</p>
+
+    <p>© 2026 USF SOLAR</p>
+
 </footer>
 
 </body>
 </html>
+
+    
+    
