@@ -1959,6 +1959,101 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+    
+<section class="usf-feedback">
+  <h2>USF SOLAR</h2>
+  <h3>Share Your Experience</h3>
+  <p>आपकी राय हमारे लिए बहुत महत्वपूर्ण है।</p>
+
+  <label>आपकी रेटिंग</label>
+  <select id="usfRating">
+    <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+    <option value="4">⭐⭐⭐⭐ Very Good</option>
+    <option value="3">⭐⭐⭐ Good</option>
+    <option value="2">⭐⭐ Fair</option>
+    <option value="1">⭐ Needs Improvement</option>
+  </select>
+
+  <label>आपका नाम</label>
+  <input id="usfName" placeholder="अपना नाम लिखें">
+
+  <label>आपका Feedback</label>
+  <textarea id="usfMessage"
+    placeholder="अपना अनुभव बताएं..."></textarea>
+
+  <button onclick="sendUSFFeedback()">
+    Send Feedback on WhatsApp
+  </button>
+</section>
+
+<style>
+.usf-feedback {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 22px;
+  background: #fff;
+  color: #173b5c;
+  border: 1px solid #dce4eb;
+  border-radius: 14px;
+  font-family: Arial, sans-serif;
+}
+.usf-feedback h2,
+.usf-feedback h3 {
+  text-align: center;
+}
+.usf-feedback label {
+  display: block;
+  margin-top: 14px;
+  font-weight: 600;
+}
+.usf-feedback input,
+.usf-feedback select,
+.usf-feedback textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  margin-top: 7px;
+  border: 1px solid #ccd6df;
+  border-radius: 8px;
+  background: white;
+}
+.usf-feedback button {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #174b78;
+  color: white;
+  font-weight: bold;
+}
+</style>
+
+<script>
+function sendUSFFeedback() {
+  const rating = document.getElementById("usfRating").value;
+  const name = document.getElementById("usfName").value.trim();
+  const message = document.getElementById("usfMessage").value.trim();
+
+  if (!name || !message) {
+    alert("कृपया अपना नाम और Feedback लिखें।");
+    return;
+  }
+
+  const text =
+    "USF SOLAR CUSTOMER FEEDBACK\n" +
+    "Name: " + name + "\n" +
+    "Rating: " + rating + "/5 Stars\n" +
+    "Feedback: " + message;
+
+  window.open(
+    "https://wa.me/917487865366?text=" +
+    encodeURIComponent(text),
+    "_blank"
+  );
+}
+</script>
+    
 </body>
 </html>
 
