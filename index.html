@@ -1966,13 +1966,13 @@ document.addEventListener("DOMContentLoaded", function () {
   <p>आपकी राय हमारे लिए बहुत महत्वपूर्ण है।</p>
 
   <label>आपकी रेटिंग</label>
-  <select id="usfRating">
-    <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
-    <option value="4">⭐⭐⭐⭐ Very Good</option>
-    <option value="3">⭐⭐⭐ Good</option>
-    <option value="2">⭐⭐ Fair</option>
-    <option value="1">⭐ Needs Improvement</option>
-  </select>
+<div class="usf-stars">
+  <span class="usf-star" data-rating="1" onclick="selectUSFRating(1)">★</span>
+  <span class="usf-star" data-rating="2" onclick="selectUSFRating(2)">★</span>
+  <span class="usf-star" data-rating="3" onclick="selectUSFRating(3)">★</span>
+  <span class="usf-star" data-rating="4" onclick="selectUSFRating(4)">★</span>
+  <span class="usf-star" data-rating="5" onclick="selectUSFRating(5)">★</span>
+</div>
 
   <label>आपका नाम</label>
   <input id="usfName" placeholder="अपना नाम लिखें">
