@@ -1930,5 +1930,35 @@ document.addEventListener(
   <p>Contact: 7487865366</p>
 </section>
 
+<!-- USF SOLAR SCROLL BLINK EFFECT -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const items = document.querySelectorAll(
+        "section h2, section h3, section p, section img"
+    );
+
+    items.forEach((item, index) => {
+        item.classList.add("usf-reveal");
+
+        if (index % 2 !== 0) {
+            item.classList.add("usf-right");
+        }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("usf-show");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    items.forEach(item => observer.observe(item));
+
+});
+</script>
 </body>
 </html>
+
