@@ -1436,6 +1436,46 @@ a.btn:hover {
     background:#087c9d;
     color:#ffffff;
 }
+    
+/* USF SOLAR SCROLL BLINK EFFECT */
+
+.usf-reveal {
+    opacity: 0;
+    transform: translateX(-45px);
+    transition: all 0.8s ease;
+}
+
+.usf-reveal.usf-right {
+    transform: translateX(45px);
+}
+
+.usf-reveal.usf-show {
+    opacity: 1;
+    transform: translateX(0);
+    animation: usfBlink 0.8s ease 1;
+}
+
+@keyframes usfBlink {
+    0% {
+        filter: brightness(0.75);
+    }
+    45% {
+        filter: brightness(1.25);
+    }
+    100% {
+        filter: brightness(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .usf-reveal {
+        opacity: 1;
+        transform: none;
+        animation: none;
+        transition: none;
+    }
+}
+    
 </style>
 
 
